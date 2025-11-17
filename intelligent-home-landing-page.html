@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligence. Privacy. Luxury. - AI-Native Smart Home Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --light-accent: #bbe1fa;
+            --text-dark: #16213e;
+            --text-light: #f0f0f0;
+            --gold: #d4af37;
+            --energy-green: #10b981;
+            --tech-purple: #8b5cf6;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--primary);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-accent {
+            color: var(--highlight);
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            opacity: 0.9;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight);
+            opacity: 1;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(50, 130, 184, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(50, 130, 184, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(50, 130, 184, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--light-accent), var(--highlight), var(--tech-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-feature {
+            text-align: center;
+        }
+
+        .hero-feature-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-feature-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(50, 130, 184, 0.4);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(50, 130, 184, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1s ease 0.8s both;
+        }
+
+        .smart-home-graphic {
+            width: 100%;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-pulse {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(50, 130, 184, 0.3) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.3; }
+        }
+
+        .tech-badge {
+            position: absolute;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .badge-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .badge-2 { top: 25%; right: 10%; animation-delay: 1s; }
+        .badge-3 { bottom: 20%; left: 10%; animation-delay: 2s; }
+        .badge-4 { bottom: 15%; right: 5%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Value Props Section */
+        .value-props {
+            background: white;
+            padding: 6rem 3rem;
+            position: relative;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .props-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .prop-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prop-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--highlight), var(--tech-purple));
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .prop-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .prop-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .prop-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prop-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .prop-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .prop-metrics {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .metric {
+            flex: 1;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--highlight);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* AI Capabilities Section */
+        .ai-capabilities {
+            background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%);
+            color: white;
+            padding: 6rem 3rem;
+        }
+
+        .capabilities-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .capability-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .capability-row:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+        }
+
+        .capability-row:nth-child(even) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .capability-row:nth-child(even):hover {
+            transform: translateX(-10px);
+        }
+
+        .capability-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .capability-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .capability-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-box .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--energy-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .capability-visual {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-icon {
+            font-size: 8rem;
+            opacity: 0.3;
+            animation: rotateIcon 20s linear infinite;
+        }
+
+        @keyframes rotateIcon {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Privacy Section */
+        .privacy-section {
+            background: white;
+            padding: 6rem 3rem;
+        }
+
+        .privacy-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .privacy-visual {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .privacy-shield {
+            font-size: 12rem;
+            color: var(--highlight);
+            opacity: 0.2;
+            animation: shieldPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes shieldPulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .privacy-points {
+            list-style: none;
+        }
+
+        .privacy-point {
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid var(--highlight);
+            transition: all 0.3s;
+        }
+
+        .privacy-point:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .privacy-point h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .privacy-point p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 6rem 3rem;
+        }
+
+        .comparison-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .comparison-table {
+            margin-top: 4rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            padding: 2rem;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .feature-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .check-yes {
+            color: var(--energy-green);
+            font-size: 1.5rem;
+        }
+
+        .check-no {
+            color: #ef4444;
+            font-size: 1.5rem;
+        }
+
+        .check-partial {
+            color: #f59e0b;
+            font-size: 1.5rem;
+        }
+
+        /* ROI Calculator */
+        .roi-section {
+            background: var(--primary);
+            color: white;
+            padding: 6rem 3rem;
+        }
+
+        .roi-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .roi-calculator {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .calculator-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .calculator-results {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            padding: 3rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .result-item {
+            margin-bottom: 2rem;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--highlight), var(--tech-purple));
+            color: white;
+            padding: 6rem 3rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .cta-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .cta-feature-item {
+            text-align: center;
+        }
+
+        .cta-feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-feature-text {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a1a;
+            color: white;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            max-width: 350px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            line-height: 1.8;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--highlight);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .props-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capability-row {
+                grid-template-columns: 1fr !important;
+            }
+
+            .privacy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-features {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-features {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                INTELLIGENT<span class="logo-accent">.HOME</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#capabilities">Capabilities</a></li>
+                <li><a href="#privacy">Privacy</a></li>
+                <li><a href="#comparison">Compare</a></li>
+                <li><a href="#roi">ROI</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Book Demo</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    Your Home<br>
+                    <span class="gradient-text">Thinks Ahead</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The world's first AI-native smart home platform that predicts your needs, 
+                    protects your privacy, and optimizes energy—all with local intelligence.
+                </p>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <div class="hero-feature-value">95%</div>
+                        <div class="hero-feature-label">Prediction Accuracy</div>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-value">36%</div>
+                        <div class="hero-feature-label">Energy Savings</div>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-value">100%</div>
+                        <div class="hero-feature-label">Local Processing</div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Schedule Demo</a>
+                    <a href="#capabilities" class="btn-secondary">Explore Features</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="smart-home-graphic">
+                    <div class="ai-pulse"></div>
+                    <div class="tech-badge badge-1">🧠 Local AI Processing</div>
+                    <div class="tech-badge badge-2">⚡ 26 TOPS</div>
+                    <div class="tech-badge badge-3">🔒 Zero Cloud</div>
+                    <div class="tech-badge badge-4">🌱 Solar Optimized</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Props -->
+    <section class="value-props">
+        <div class="section-header fade-in">
+            <h2>Intelligence That Respects You</h2>
+            <p>Unlike traditional smart homes that react or cloud platforms that invade, 
+               we predict and protect with local AI that learns your lifestyle.</p>
+        </div>
+        <div class="props-grid">
+            <div class="prop-card fade-in">
+                <div class="prop-icon">🔮</div>
+                <h3>Predictive Intelligence</h3>
+                <p>Your home learns when you'll arrive, what you'll need, and how to prepare—
+                   85-95% occupancy prediction accuracy within 30 days.</p>
+                <div class="prop-metrics">
+                    <div class="metric">
+                        <div class="metric-value">0</div>
+                        <div class="metric-label">Manual Adjustments</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">24/7</div>
+                        <div class="metric-label">Learning</div>
+                    </div>
+                </div>
+            </div>
+            <div class="prop-card fade-in">
+                <div class="prop-icon">🔒</div>
+                <h3>Privacy-First Architecture</h3>
+                <p>100% local AI processing on Raspberry Pi 5 with Hailo-8 accelerator. 
+                   No cloud. No data mining. Your patterns stay in your home.</p>
+                <div class="prop-metrics">
+                    <div class="metric">
+                        <div class="metric-value">&lt;200ms</div>
+                        <div class="metric-label">Voice Response</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">0</div>
+                        <div class="metric-label">Cloud Servers</div>
+                    </div>
+                </div>
+            </div>
+            <div class="prop-card fade-in">
+                <div class="prop-icon">⚡</div>
+                <h3>Energy Optimization</h3>
+                <p>Weather-aware HVAC control and intelligent solar/battery orchestration. 
+                   Save 15-36% on HVAC, 50-90% on total electricity bills.</p>
+                <div class="prop-metrics">
+                    <div class="metric">
+                        <div class="metric-value">58%</div>
+                        <div class="metric-label">Peak Savings</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">3-5yr</div>
+                        <div class="metric-label">ROI Timeline</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Capabilities -->
+    <section id="capabilities" class="ai-capabilities">
+        <div class="capabilities-container">
+            <div class="section-header fade-in">
+                <h2>Six Pillars of Intelligence</h2>
+                <p>Advanced AI capabilities running entirely on local hardware, 
+                   validated by peer-reviewed research and real-world deployments.</p>
+            </div>
+            <div class="capabilities-grid">
+                <div class="capability-row fade-in">
+                    <div class="capability-content">
+                        <h3>1. Occupancy Prediction</h3>
+                        <p>Multi-modal sensor fusion predicts when and where people will be. 
+                           No cameras required—temperature, CO2, humidity, motion, and power 
+                           consumption create an accurate occupancy model.</p>
+                        <div class="capability-stats">
+                            <div class="stat-box">
+                                <div class="value">85-95%</div>
+                                <div class="label">Prediction Accuracy</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="value">&lt;10ms</div>
+                                <div class="label">Inference Time</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="capability-visual">
+                        <div class="visual-icon">👥</div>
+                    </div>
+                </div>
+
+                <div class="capability-row fade-in">
+                    <div class="capability-visual">
+                        <div class="visual-icon">🌤️</div>
+                    </div>
+                    <div class="capability-content">
+                        <h3>2. Weather-Aware HVAC</h3>
+                        <p>Deep reinforcement learning anticipates temperature changes and 
+                           pre-conditions your home. Pre-cool before heat waves, thermal mass 
+                           loading, and time-of-use optimization.</p>
+                        <div class="capability-stats">
+                            <div class="stat-box">
+                                <div class="value">58.79%</div>
+                                <div class="label">Energy Savings</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="value">±0.5°C</div>
+                                <div class="label">Comfort Range</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="capability-row fade-in">
+                    <div class="capability-content">
+                        <h3>3. Event-Driven Intelligence</h3>
+                        <p>Learn and predict daily routines: meal times, wake patterns, 
+                           entertainment sessions. Kitchen pre-heats before predicted dinner, 
+                           bedroom warms before wake time—all without fixed schedules.</p>
+                        <div class="capability-stats">
+                            <div class="stat-box">
+                                <div class="value">88-93%</div>
+                                <div class="label">Event Accuracy</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="value">30min</div>
+                                <div class="label">Pre-Conditioning</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="capability-visual">
+                        <div class="visual-icon">📅</div>
+                    </div>
+                </div>
+
+                <div class="capability-row fade-in">
+                    <div class="capability-visual">
+                        <div class="visual-icon">☀️</div>
+                    </div>
+                    <div class="capability-content">
+                        <h3>4. Solar & Battery Optimization</h3>
+                        <p>Intelligent load prioritization across P1-P4 circuits. Critical loads 
+                           always powered, flexible loads deferred to solar hours, automated 
+                           shedding in outages to extend battery 30-50%.</p>
+                        <div class="capability-stats">
+                            <div class="stat-box">
+                                <div class="value">50-90%</div>
+                                <div class="label">Bill Reduction</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="value">30-50%</div>
+                                <div class="label">Battery Extension</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="capability-row fade-in">
+                    <div class="capability-content">
+                        <h3>5. Local Voice Control</h3>
+                        <p>Whisper.cpp and Ollama process speech entirely on-device. 
+                           No Amazon. No Google. Your voice commands never leave your home. 
+                           Faster response, absolute privacy.</p>
+                        <div class="capability-stats">
+                            <div class="stat-box">
+                                <div class="value">&lt;200ms</div>
+                                <div class="label">Response Time</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="value">100%</div>
+                                <div class="label">Local Processing</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="capability-visual">
+                        <div class="visual-icon">🎤</div>
+                    </div>
+                </div>
+
+                <div class="capability-row fade-in">
+                    <div class="capability-visual">
+                        <div class="visual-icon">👁️</div>
+                    </div>
+                    <div class="capability-content">
+                        <h3>6. Computer Vision</h3>
+                        <p>Edge AI for water leak detection, fall detection (85-95% accuracy), 
+                           package monitoring, and security. All processing on ESP32-S3 cameras—
+                           selective recording only, no continuous streaming.</p>
+                        <div class="capability-stats">
+                            <div class="stat-box">
+                                <div class="value">85-95%</div>
+                                <div class="label">Fall Detection</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="value">$12.5K</div>
+                                <div class="label">Avg Leak Prevented</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section id="privacy" class="privacy-section">
+        <div class="privacy-container">
+            <div class="section-header fade-in">
+                <h2>Privacy is Not a Feature. It's the Foundation.</h2>
+                <p>While others mine your data, we built a platform where your intelligence 
+                   truly belongs to you. Zero compromise.</p>
+            </div>
+            <div class="privacy-grid">
+                <div class="privacy-visual fade-in">
+                    <div class="privacy-shield">🛡️</div>
+                </div>
+                <ul class="privacy-points">
+                    <li class="privacy-point fade-in">
+                        <h4>🏠 100% Local Processing</h4>
+                        <p>All AI inference runs on Raspberry Pi 5 with Hailo-8 accelerator 
+                           (26 TOPS). Your voice commands, occupancy patterns, and predictions 
+                           never touch the internet.</p>
+                    </li>
+                    <li class="privacy-point fade-in">
+                        <h4>🔐 End-to-End Encryption</h4>
+                        <p>Every data point encrypted at rest on local NAS storage. 
+                           User-controlled access. No backdoors. No third-party analytics.</p>
+                    </li>
+                    <li class="privacy-point fade-in">
+                        <h4>📹 Selective Recording</h4>
+                        <p>Computer vision runs on edge cameras—only high-confidence security 
+                           events saved. Bedrooms/bathrooms excluded. You define privacy zones.</p>
+                    </li>
+                    <li class="privacy-point fade-in">
+                        <h4>🚫 No Cloud Dependency</h4>
+                        <p>System operates fully offline. Weather forecasts cached locally. 
+                           No subscription required. No data mining revenue model.</p>
+                    </li>
+                    <li class="privacy-point fade-in">
+                        <h4>🔓 Open Source Foundation</h4>
+                        <p>Built on Home Assistant (Apache 2.0). Auditable code. 
+                           Community-verified security. No black boxes.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section id="comparison" class="comparison-section">
+        <div class="comparison-container">
+            <div class="section-header fade-in">
+                <h2>How We Compare</h2>
+                <p>See why we're 10+ years ahead of professional systems and infinitely 
+                   more private than consumer platforms.</p>
+            </div>
+            <div class="comparison-table fade-in">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Our Platform</th>
+                            <th>Control4/Crestron</th>
+                            <th>Google/Alexa</th>
+                            <th>Josh.ai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-name">Occupancy Prediction</td>
+                            <td><span class="check-yes">✓</span> 85-95% accurate</td>
+                            <td><span class="check-no">✗</span> Detection only</td>
+                            <td><span class="check-no">✗</span> None</td>
+                            <td><span class="check-no">✗</span> None</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Weather-Aware HVAC</td>
+                            <td><span class="check-yes">✓</span> Deep RL optimization</td>
+                            <td><span class="check-partial">◐</span> Optional integration</td>
+                            <td><span class="check-no">✗</span> Basic only</td>
+                            <td><span class="check-no">✗</span> None</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Energy Savings</td>
+                            <td><span class="check-yes">✓</span> 15-36% HVAC</td>
+                            <td><span class="check-partial">◐</span> Simple schedules</td>
+                            <td><span class="check-no">✗</span> Minimal</td>
+                            <td><span class="check-no">✗</span> Not focused</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Solar/Battery Optimization</td>
+                            <td><span class="check-yes">✓</span> Intelligent priority</td>
+                            <td><span class="check-no">✗</span> None</td>
+                            <td><span class="check-no">✗</span> None</td>
+                            <td><span class="check-no">✗</span> None</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Local AI Processing</td>
+                            <td><span class="check-yes">✓</span> 100% on-device</td>
+                            <td><span class="check-partial">◐</span> Some cloud</td>
+                            <td><span class="check-no">✗</span> All cloud</td>
+                            <td><span class="check-partial">◐</span> Hybrid</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Voice Response Time</td>
+                            <td><span class="check-yes">✓</span> &lt;200ms local</td>
+                            <td><span class="check-partial">◐</span> 500ms+</td>
+                            <td><span class="check-no">✗</span> 1-3s cloud</td>
+                            <td><span class="check-yes">✓</span> Fast local</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Privacy Guarantee</td>
+                            <td><span class="check-yes">✓</span> Zero cloud</td>
+                            <td><span class="check-partial">◐</span> Some cloud</td>
+                            <td><span class="check-no">✗</span> Data mining</td>
+                            <td><span class="check-yes">✓</span> Good</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Adaptive Learning</td>
+                            <td><span class="check-yes">✓</span> Continuous</td>
+                            <td><span class="check-no">✗</span> Fixed programs</td>
+                            <td><span class="check-partial">◐</span> Basic</td>
+                            <td><span class="check-partial">◐</span> Voice only</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Installation Labor</td>
+                            <td><span class="check-yes">✓</span> 50-70% reduction</td>
+                            <td><span class="check-no">✗</span> High labor</td>
+                            <td><span class="check-yes">✓</span> DIY</td>
+                            <td><span class="check-no">✗</span> Professional</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Starting Price</td>
+                            <td><span class="check-yes">✓</span> $599-$1,299</td>
+                            <td><span class="check-no">✗</span> $20K-$57K</td>
+                            <td><span class="check-yes">✓</span> $50-$200</td>
+                            <td><span class="check-no">✗</span> $10K+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section id="roi" class="roi-section">
+        <div class="roi-container">
+            <div class="section-header fade-in">
+                <h2>Calculate Your Savings</h2>
+                <p>See how much you'll save with predictive intelligence and energy optimization.</p>
+            </div>
+            <div class="roi-calculator fade-in">
+                <div class="calculator-grid">
+                    <div class="calculator-inputs">
+                        <div class="input-group">
+                            <label>Monthly Electricity Bill (AUD)</label>
+                            <input type="number" id="electricityBill" value="350" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label>Home Size (sq meters)</label>
+                            <input type="number" id="homeSize" value="250" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label>Do you have solar?</label>
+                            <select id="solarStatus" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.1); color: white; font-size: 1rem;">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>HVAC Type</label>
+                            <select id="hvacType" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.1); color: white; font-size: 1rem;">
+                                <option value="central">Central HVAC</option>
+                                <option value="split">Split System</option>
+                                <option value="ducted">Ducted</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="calculator-results">
+                        <div class="result-item">
+                            <div class="result-label">Annual Energy Savings</div>
+                            <div class="result-value" id="annualSavings">$2,520</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">System Cost Recovery</div>
+                            <div class="result-value" id="paybackTime">3.2 years</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">10-Year Net Benefit</div>
+                            <div class="result-value" id="tenYearBenefit">$17,200</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content fade-in">
+            <h2>Experience the Future Today</h2>
+            <p>Join forward-thinking homeowners who demand intelligence without compromise.</p>
+            <div class="cta-features">
+                <div class="cta-feature-item">
+                    <div class="cta-feature-icon">🎯</div>
+                    <div class="cta-feature-text">90-Day MVP Ready</div>
+                </div>
+                <div class="cta-feature-item">
+                    <div class="cta-feature-icon">🏆</div>
+                    <div class="cta-feature-text">Pilot Programs Available</div>
+                </div>
+                <div class="cta-feature-item">
+                    <div class="cta-feature-icon">🤝</div>
+                    <div class="cta-feature-text">CEDIA Partner Network</div>
+                </div>
+                <div class="cta-feature-item">
+                    <div class="cta-feature-icon">🇦🇺</div>
+                    <div class="cta-feature-text">Melbourne-Based</div>
+                </div>
+            </div>
+            <div style="margin-top: 2rem;">
+                <a href="#contact" class="btn-primary" style="background: white; color: var(--accent); margin-right: 1rem;">Schedule Demo</a>
+                <a href="#contact" class="btn-secondary">Partner Inquiry</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>INTELLIGENT.HOME</h3>
+                <p>The world's first privacy-preserving, predictive smart home platform. 
+                   Built in Melbourne for the global luxury market.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul class="footer-links">
+                    <li><a href="#capabilities">AI Capabilities</a></li>
+                    <li><a href="#privacy">Privacy</a></li>
+                    <li><a href="#comparison">Comparison</a></li>
+                    <li><a href="#roi">ROI Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Tech Specs</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Intelligent.Home Platform | Melbourne, Victoria, Australia | 
+               Privacy-First Smart Home Intelligence</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ROI Calculator
+        function calculateROI() {
+            const bill = parseFloat(document.getElementById('electricityBill').value) || 350;
+            const size = parseFloat(document.getElementById('homeSize').value) || 250;
+            const hasSolar = document.getElementById('solarStatus').value === 'yes';
+            
+            // Calculate savings
+            let hvacSavings = bill * 0.25; // 25% average HVAC savings
+            let solarBonus = hasSolar ? bill * 0.15 : 0; // Extra 15% with solar optimization
+            let totalMonthlySavings = hvacSavings + solarBonus;
+            let annualSavings = totalMonthlySavings * 12;
+            
+            // System cost estimate (simplified)
+            let systemCost = 8000; // Average system cost
+            let paybackYears = systemCost / annualSavings;
+            let tenYearBenefit = (annualSavings * 10) - systemCost;
+            
+            // Update display
+            document.getElementById('annualSavings').textContent = 
+                '$' + Math.round(annualSavings).toLocaleString();
+            document.getElementById('paybackTime').textContent = 
+                paybackYears.toFixed(1) + ' years';
+            document.getElementById('tenYearBenefit').textContent = 
+                '$' + Math.round(tenYearBenefit).toLocaleString();
+        }
+
+        // Add event listeners for calculator inputs
+        ['electricityBill', 'homeSize', 'solarStatus', 'hvacType'].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.addEventListener('input', calculateROI);
+                element.addEventListener('change', calculateROI);
+            }
+        });
+
+        // Initial calculation
+        calculateROI();
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

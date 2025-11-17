@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmUnion.AI - Take Back Control of Australia's $32B Livestock Market</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a1628;
+            --secondary: #1e3a5f;
+            --accent: #16a34a;
+            --highlight: #22c55e;
+            --gold: #f59e0b;
+            --red: #dc2626;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--primary);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            opacity: 0.9;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight);
+            opacity: 1;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(22, 163, 74, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #0a1628 100%);
+            color: white;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(22, 163, 74, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--highlight), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-problem {
+            background: rgba(220, 38, 38, 0.15);
+            border-left: 4px solid var(--red);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-problem h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--gold);
+        }
+
+        .hero-problem p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(22, 163, 74, 0.4);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(22, 163, 74, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1s ease 0.9s both;
+        }
+
+        .union-graphic {
+            width: 100%;
+            height: 550px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .unity-pulse {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(22, 163, 74, 0.3) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+        }
+
+        .union-icon {
+            font-size: 12rem;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .tech-badge {
+            position: absolute;
+            background: rgba(22, 163, 74, 0.2);
+            border: 1px solid rgba(22, 163, 74, 0.4);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .badge-1 { top: 8%; left: 5%; animation-delay: 0s; }
+        .badge-2 { top: 22%; right: 8%; animation-delay: 1s; }
+        .badge-3 { bottom: 25%; left: 8%; animation-delay: 2s; }
+        .badge-4 { bottom: 12%; right: 5%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: white;
+            padding: 6rem 3rem;
+        }
+
+        .section-header {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .problem-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--red);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .problem-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .problem-stat {
+            background: rgba(220, 38, 38, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .problem-stat strong {
+            color: var(--red);
+            font-size: 1.3rem;
+        }
+
+        /* Union Solution */
+        .union-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 3rem;
+        }
+
+        .union-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .union-manifesto {
+            background: rgba(22, 163, 74, 0.15);
+            border: 2px solid var(--highlight);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .union-manifesto h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+
+        .union-manifesto p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .union-principles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .principle {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .principle h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--highlight);
+        }
+
+        .principle p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* AI Capabilities */
+        .ai-section {
+            background: white;
+            padding: 6rem 3rem;
+        }
+
+        .ai-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .ai-grid {
+            display: grid;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .ai-feature {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .ai-feature:hover {
+            transform: translateX(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .ai-icon {
+            font-size: 5rem;
+            line-height: 1;
+        }
+
+        .ai-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .ai-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .benefit-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .benefit-box p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Comparison Calculator */
+        .savings-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 6rem 3rem;
+        }
+
+        .savings-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .calculator {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .calculator-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .calculator-results {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            padding: 3rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .result-item {
+            margin-bottom: 2rem;
+        }
+
+        .result-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .result-savings {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 6rem 3rem;
+        }
+
+        .comparison-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .comparison-table {
+            margin-top: 4rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            padding: 2rem;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .feature-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .check-yes {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .check-no {
+            color: var(--red);
+            font-size: 1.5rem;
+        }
+
+        /* Certification */
+        .certification-section {
+            background: white;
+            padding: 6rem 3rem;
+        }
+
+        .certification-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .cert-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--accent);
+        }
+
+        .cert-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .cert-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cert-card li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .cert-card li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            padding: 6rem 3rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .cta-benefits {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .cta-benefit {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-benefit-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a1a;
+            color: white;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            line-height: 1.8;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--highlight);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .union-principles {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-feature {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-benefits {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🤝</span> FarmUnion.AI
+            </div>
+            <ul class="nav-links">
+                <li><a href="#problem">The Problem</a></li>
+                <li><a href="#solution">Union Solution</a></li>
+                <li><a href="#ai">AI Innovation</a></li>
+                <li><a href="#savings">Calculate Savings</a></li>
+                <li><a href="#certification">Certification</a></li>
+            </ul>
+            <a href="#join" class="nav-cta">Join the Movement</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    United Farmers,<br>
+                    <span class="gradient-text">Fair Prices</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Australia's first farmer-owned cooperative powered by AI. Take back control 
+                    from middlemen extracting billions while you struggle with payment delays 
+                    and opaque pricing.
+                </p>
+                <div class="hero-problem">
+                    <h3>⚠️ The Exploitation Must End</h3>
+                    <p>47,000 cattle producers managing $32 billion worth of livestock are being 
+                       divided and conquered. Middlemen charge 3.5-5.5% commissions ($1,500 on 
+                       every $30,000 sale), impose 30-60 day payment delays, and collude to 
+                       suppress prices. Together, we can change this.</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">$32B</div>
+                        <div class="hero-stat-label">Market We Control Together</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">47,000</div>
+                        <div class="hero-stat-label">Farmers United</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">5.5%</div>
+                        <div class="hero-stat-label">Commissions We Eliminate</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">7 days</div>
+                        <div class="hero-stat-label">Payment, Not 60</div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#join" class="btn-primary">Join Free (Founding Members)</a>
+                    <a href="#savings" class="btn-secondary">See Your Savings</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="union-graphic">
+                    <div class="unity-pulse"></div>
+                    <div class="union-icon">🤝</div>
+                    <div class="tech-badge badge-1">🧠 AI-Powered</div>
+                    <div class="tech-badge badge-2">🌾 Farmer-Owned</div>
+                    <div class="tech-badge badge-3">💰 Direct Trading</div>
+                    <div class="tech-badge badge-4">⚡ 7-Day Payment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem-section">
+        <div class="section-header fade-in">
+            <h2>Stop Being Divided and Conquered</h2>
+            <p>The current system is designed to exploit individual farmers. Middlemen profit 
+               while you bear all the risk, costs, and uncertainty.</p>
+        </div>
+        <div class="problem-grid">
+            <div class="problem-card fade-in">
+                <div class="problem-icon">💸</div>
+                <h3>Middleman Tax</h3>
+                <p>Livestock agents extract 3.5-5.5% on every sale. On a typical $30,000 
+                   transaction, that's $1,500 going to middlemen who add no value.</p>
+                <div class="problem-stat">
+                    <strong>$1,500</strong> stolen from every $30K sale
+                </div>
+            </div>
+            <div class="problem-card fade-in">
+                <div class="problem-icon">⏳</div>
+                <h3>Payment Delays Kill Cash Flow</h3>
+                <p>30-60 day payment terms are standard, with some farmers waiting 120 days. 
+                   This has pushed $1.091 billion in agricultural loans into overdue status.</p>
+                <div class="problem-stat">
+                    <strong>65%</strong> of farmers feel stretched by expenses
+                </div>
+            </div>
+            <div class="problem-card fade-in">
+                <div class="problem-icon">🎭</div>
+                <h3>Opaque Pricing & Collusion</h3>
+                <p>You can't see who's buying your stock. Commission buyers actively collude 
+                   to reduce competition, as identified by ACCC's 2017 investigation.</p>
+                <div class="problem-stat">
+                    No buyer registers = <strong>Price manipulation</strong>
+                </div>
+            </div>
+            <div class="problem-card fade-in">
+                <div class="problem-icon">🚛</div>
+                <h3>Transport Costs Crushing Margins</h3>
+                <p>Transport expenses comprise up to 35% of market price for northern 
+                   producers, with cattle traveling average 1,000km to processors.</p>
+                <div class="problem-stat">
+                    Up to <strong>35%</strong> of sale price goes to transport
+                </div>
+            </div>
+            <div class="problem-card fade-in">
+                <div class="problem-icon">🏛️</div>
+                <h3>Regulatory Capture</h3>
+                <p>ACCC recommendations for reform remain unimplemented. No mandatory buyer 
+                   registers, no standardized licensing, no price transparency.</p>
+                <div class="problem-stat">
+                    <strong>Zero progress</strong> on farmer protections
+                </div>
+            </div>
+            <div class="problem-card fade-in">
+                <div class="problem-icon">⚖️</div>
+                <h3>Power Imbalance</h3>
+                <p>Five major processors control 50%+ of red meat production. Fragmented 
+                   farmers have no negotiating power against concentrated buyers.</p>
+                <div class="problem-stat">
+                    <strong>47,000 farmers</strong> vs 5 mega-processors
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Union Solution -->
+    <section id="solution" class="union-section">
+        <div class="union-container">
+            <div class="section-header fade-in">
+                <h2>The Farmer Union Solution</h2>
+                <p>A cooperative owned by farmers, for farmers. Together we have the power 
+                   to demand fair prices, transparent trading, and immediate payment.</p>
+            </div>
+            
+            <div class="union-manifesto fade-in">
+                <h3>Our Manifesto: Power Through Unity</h3>
+                <p>We refuse to be divided any longer. FarmUnion.AI is not another platform 
+                   owned by venture capitalists or middlemen. This is OUR platform—farmer-owned, 
+                   farmer-governed, farmer-benefiting. When 47,000 producers unite, we control 
+                   the market, not the other way around.</p>
+            </div>
+
+            <div class="union-principles">
+                <div class="principle fade-in">
+                    <h4>🎯 Direct Trading Only</h4>
+                    <p>No middlemen. No agents. No commission buyers. Farmers connect directly 
+                       with processors, feedlots, and exporters. You see exactly who's buying 
+                       and at what price.</p>
+                </div>
+                <div class="principle fade-in">
+                    <h4>⚡ 7-Day Payment Guarantee</h4>
+                    <p>Funds released within 7 days of delivery via smart escrow. No more 
+                       60-120 day wait times. Your cash flow is protected by blockchain-verified 
+                       payment contracts.</p>
+                </div>
+                <div class="principle fade-in">
+                    <h4>💎 Transparent Pricing</h4>
+                    <p>Real-time market prices visible to all members. Historical data shows 
+                       true market values. No more information asymmetry favoring buyers.</p>
+                </div>
+                <div class="principle fade-in">
+                    <h4>🤝 Collective Bargaining</h4>
+                    <p>Pool livestock for better negotiating power. Coordinate supply to 
+                       maximize prices. Buyers negotiate with the union, not isolated farmers.</p>
+                </div>
+                <div class="principle fade-in">
+                    <h4>🛡️ Quality Certification</h4>
+                    <p>Union-verified quality standards command premium prices. Members earn 
+                       credentials that buyers trust, eliminating downward price pressure.</p>
+                </div>
+                <div class="principle fade-in">
+                    <h4>🧠 AI-Powered Operations</h4>
+                    <p>Predictive analytics for market timing, weather adaptation, and stock 
+                       optimization. Technology serves farmers, not investors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Capabilities -->
+    <section id="ai" class="ai-section">
+        <div class="ai-container">
+            <div class="section-header fade-in">
+                <h2>AI That Works For Farmers, Not Against Them</h2>
+                <p>Our AI systems improve your operations, increase your profits, and give 
+                   you competitive advantages—all while you retain 100% ownership of your data.</p>
+            </div>
+            <div class="ai-grid">
+                <div class="ai-feature fade-in">
+                    <div class="ai-icon">🥩</div>
+                    <div class="ai-content">
+                        <h3>AI Meat Quality Optimization</h3>
+                        <p>Computer vision and sensor data analyze your livestock in real-time, 
+                           predicting meat quality outcomes (marbling, yield, MSA grades) months 
+                           before slaughter. Know which animals to sell now vs fatten longer for 
+                           premium prices.</p>
+                        <div class="ai-benefits">
+                            <div class="benefit-box">
+                                <h4>Quality Prediction</h4>
+                                <p>85%+ accuracy predicting MSA grades from growth data</p>
+                            </div>
+                            <div class="benefit-box">
+                                <h4>Timing Optimization</h4>
+                                <p>Know exact best time to sell for maximum $/kg returns</p>
+                            </div>
+                            <div class="benefit-box">
+                                <h4>Premium Targeting</h4>
+                                <p>Match your high-quality stock to premium buyers automatically</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-feature fade-in">
+                    <div class="ai-icon">🌦️</div>
+                    <div class="ai-content">
+                        <h3>Extreme Weather Survival System</h3>
+                        <p>Climate models trained on Australian conditions predict droughts, 
+                           floods, and heat waves up to 6 months ahead. Automated recommendations 
+                           for stock movements, feed supplementation, and emergency selling before 
+                           conditions deteriorate.</p>
+                        <div class="ai-benefits">
+                            <div class="benefit-box">
+                                <h4>6-Month Forecasts</h4>
+                                <p>Localized weather predictions for your specific property</p>
+                            </div>
+                            <div class="benefit-box">
+                                <h4>Automated Alerts</h4>
+                                <p>Early warnings for droughts, floods, heat stress events</p>
+                            </div>
+                            <div class="benefit-box">
+                                <h4>Action Plans</h4>
+                                <p>Step-by-step survival strategies generated automatically</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-feature fade-in">
+                    <div class="ai-icon">📊</div>
+                    <div class="ai-content">
+                        <h3>Smart Stock & Resource Management</h3>
+                        <p>Integrated farm management AI tracks every animal, paddock, and input. 
+                           Predicts optimal stocking rates, identifies underperforming animals, 
+                           and automates compliance documentation (NLIS, LPA, MSA).</p>
+                        <div class="ai-benefits">
+                            <div class="benefit-box">
+                                <h4>Stocking Optimization</h4>
+                                <p>AI calculates ideal carrying capacity per paddock in real-time</p>
+                            </div>
+                            <div class="benefit-box">
+                                <h4>Automated Compliance</h4>
+                                <p>NLIS movements, LPA records, MSA declarations auto-generated</p>
+                            </div>
+                            <div class="benefit-box">
+                                <h4>Performance Analytics</h4>
+                                <p>Identify bottom 20% of herd for culling, top 20% for breeding</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-feature fade-in">
+                    <div class="ai-icon">💹</div>
+                    <div class="ai-content">
+                        <h3>Market Timing Intelligence</h3>
+                        <p>ML models analyze historical prices, seasonal patterns, export demand, 
+                           and processor schedules to predict optimal selling windows. Alerts when 
+                           your livestock category hits peak pricing.</p>
+                        <div class="ai-benefits">
+                            <div class="benefit-box">
+                                <h4>Price Predictions</h4>
+                                <p>30-90 day forward price forecasts by livestock category</p>
+                            </div>
+                            <div class="benefit-box">
+                                <h4>Optimal Timing</h4>
+                                <p>Know whether to sell now or wait for better prices</p>
+                            </div>
+                            <div class="benefit-box">
+                                <h4>Export Demand Tracking</h4>
+                                <p>Real-time visibility into international buyer demand spikes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-feature fade-in">
+                    <div class="ai-icon">🔗</div>
+                    <div class="ai-content">
+                        <h3>Supply Chain Optimization</h3>
+                        <p>AI coordinates transport logistics across union members to reduce 
+                           costs. Pools shipments to negotiation better rates, finds backhaul 
+                           opportunities, and optimizes routes for animal welfare.</p>
+                        <div class="ai-benefits">
+                            <div class="benefit-box">
+                                <h4>20-35% Cost Reduction</h4>
+                                <p>Pooled transport booking and route optimization</p>
+                            </div>
+                            <div class="benefit-box">
+                                <h4>Welfare Compliance</h4>
+                                <p>Automated journey planning within animal welfare limits</p>
+                            </div>
+                            <div class="benefit-box">
+                                <h4>Real-Time Tracking</h4>
+                                <p>GPS tracking of every shipment with temperature monitoring</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Savings Calculator -->
+    <section id="savings" class="savings-section">
+        <div class="savings-container">
+            <div class="section-header fade-in">
+                <h2>Calculate Your Annual Savings</h2>
+                <p>See exactly how much money you'll keep by eliminating middlemen and joining 
+                   the union.</p>
+            </div>
+            <div class="calculator fade-in">
+                <div class="calculator-grid">
+                    <div class="calculator-inputs">
+                        <div class="input-group">
+                            <label>Annual Livestock Sales (AUD)</label>
+                            <input type="number" id="annualSales" value="300000" min="0" step="10000">
+                        </div>
+                        <div class="input-group">
+                            <label>Current Agent Commission (%)</label>
+                            <input type="number" id="commission" value="4.5" min="0" max="10" step="0.5">
+                        </div>
+                        <div class="input-group">
+                            <label>Average Payment Delay (days)</label>
+                            <input type="number" id="paymentDelay" value="45" min="0" max="120">
+                        </div>
+                        <div class="input-group">
+                            <label>Number of Cattle per Year</label>
+                            <input type="number" id="cattleCount" value="200" min="0" step="10">
+                        </div>
+                    </div>
+                    <div class="calculator-results">
+                        <div class="result-item">
+                            <div class="result-label">Annual Commission Savings</div>
+                            <div class="result-value" id="commissionSavings">$13,500</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">Cash Flow Improvement</div>
+                            <div class="result-value" id="cashflowValue">$30,000</div>
+                        </div>
+                        <div class="result-savings">
+                            <div class="result-label">Total Annual Benefit</div>
+                            <div class="result-value" id="totalSavings">$43,500</div>
+                            <p style="margin-top: 1rem; font-size: 1.1rem;">Plus AI optimization 
+                               gains: 10-15% better prices through quality targeting and market timing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section">
+        <div class="comparison-container">
+            <div class="section-header fade-in">
+                <h2>FarmUnion.AI vs Traditional System</h2>
+                <p>See exactly why we're different from platforms that still serve middlemen.</p>
+            </div>
+            <div class="comparison-table fade-in">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>FarmUnion.AI</th>
+                            <th>AuctionsPlus</th>
+                            <th>Traditional Agents</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-name">Direct Buyer Connection</td>
+                            <td><span class="check-yes">✓</span> Yes - No middlemen</td>
+                            <td><span class="check-no">✗</span> Still requires agents</td>
+                            <td><span class="check-no">✗</span> Agents control all</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Commission/Fees</td>
+                            <td><span class="check-yes">✓</span> 0.5% (covers platform costs)</td>
+                            <td><span class="check-no">✗</span> $7.95-9.35/head + agent fees</td>
+                            <td><span class="check-no">✗</span> 3.5-5.5% commission</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Payment Terms</td>
+                            <td><span class="check-yes">✓</span> 7 days guaranteed</td>
+                            <td><span class="check-no">✗</span> 30-60 days standard</td>
+                            <td><span class="check-no">✗</span> 30-120 days</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Price Transparency</td>
+                            <td><span class="check-yes">✓</span> Full market visibility</td>
+                            <td><span class="check-yes">✓</span> Auction prices public</td>
+                            <td><span class="check-no">✗</span> Opaque private sales</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">AI Quality Prediction</td>
+                            <td><span class="check-yes">✓</span> 85%+ accuracy MSA grades</td>
+                            <td><span class="check-no">✗</span> None</td>
+                            <td><span class="check-no">✗</span> None</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Weather/Climate AI</td>
+                            <td><span class="check-yes">✓</span> 6-month forecasts</td>
+                            <td><span class="check-no">✗</span> None</td>
+                            <td><span class="check-no">✗</span> None</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Farmer Ownership</td>
+                            <td><span class="check-yes">✓</span> 100% cooperative</td>
+                            <td><span class="check-no">✗</span> Corporate owned</td>
+                            <td><span class="check-no">✗</span> Privately held</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Collective Bargaining</td>
+                            <td><span class="check-yes">✓</span> Pool orders for power</td>
+                            <td><span class="check-no">✗</span> Individual listings</td>
+                            <td><span class="check-no">✗</span> You're on your own</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">NLIS Integration</td>
+                            <td><span class="check-yes">✓</span> Automated compliance</td>
+                            <td><span class="check-yes">✓</span> Manual entry required</td>
+                            <td><span class="check-no">✗</span> Paper-based</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Who Benefits</td>
+                            <td><span class="check-yes">✓</span> Farmers</td>
+                            <td><span class="check-no">✗</span> Platform + Agents</td>
+                            <td><span class="check-no">✗</span> Agents + Buyers</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Programs -->
+    <section id="certification" class="certification-section">
+        <div class="certification-container">
+            <div class="section-header fade-in">
+                <h2>Union Certification Programs</h2>
+                <p>Earn verified credentials that command premium prices and protect your 
+                   reputation in the marketplace.</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-card fade-in">
+                    <h3>🏆 Quality Certification Tiers</h3>
+                    <ul>
+                        <li><strong>Bronze Tier:</strong> NLIS compliance verified, LPA accreditation 
+                            current, basic property biosecurity plan on file</li>
+                        <li><strong>Silver Tier:</strong> Bronze + MSA grading participation, 
+                            documented animal welfare practices, feed quality standards met</li>
+                        <li><strong>Gold Tier:</strong> Silver + AI quality prediction history, 
+                            premium genetics verified, environmental sustainability practices</li>
+                        <li><strong>Platinum Tier:</strong> Gold + export certification ready, 
+                            blockchain-verified supply chain, carbon neutral operations</li>
+                    </ul>
+                    <p style="margin-top: 1.5rem; padding: 1rem; background: #f0fdf4; border-radius: 8px;">
+                        <strong>Premium Advantage:</strong> Platinum certified livestock typically 
+                        command 15-25% price premiums from quality-focused buyers (Japanese, Korean, 
+                        premium domestic markets).
+                    </p>
+                </div>
+
+                <div class="cert-card fade-in">
+                    <h3>📚 Training & Development Programs</h3>
+                    <ul>
+                        <li><strong>AI Farming Fundamentals:</strong> 8-week online course on using 
+                            platform AI tools for quality prediction, market timing, and resource 
+                            optimization</li>
+                        <li><strong>Climate Resilience Masterclass:</strong> Advanced weather 
+                            prediction interpretation, drought preparation strategies, extreme event 
+                            response planning</li>
+                        <li><strong>Direct Trading Skills:</strong> Negotiation tactics, buyer 
+                            relationship management, contract fundamentals for dealing directly with 
+                            processors</li>
+                        <li><strong>Regenerative Grazing Certification:</strong> Soil health 
+                            principles, rotational grazing optimization, carbon farming opportunities</li>
+                        <li><strong>Export Market Access:</strong> International buyer requirements, 
+                            export documentation, specific market standards (Halal, Kosher, EU, etc.)</li>
+                    </ul>
+                    <p style="margin-top: 1.5rem; padding: 1rem; background: #f0fdf4; border-radius: 8px;">
+                        <strong>Member Benefit:</strong> All training programs free for union members. 
+                        External participants pay $2,500-5,000 per course.
+                    </p>
+                </div>
+
+                <div class="cert-card fade-in">
+                    <h3>🔬 AI Performance Verification</h3>
+                    <ul>
+                        <li><strong>Quality Prediction Accuracy:</strong> Your AI predictions 
+                            validated against actual MSA results, creating trusted performance history 
+                            buyers value</li>
+                        <li><strong>Genetic Verification:</strong> Blockchain-recorded bloodline 
+                            documentation proving superior genetics for breeding stock sales</li>
+                        <li><strong>Feed & Treatment Records:</strong> Immutable record of all inputs, 
+                            proving antibiotic-free, hormone-free, or organic claims</li>
+                        <li><strong>Environmental Footprint:</strong> Carbon accounting verified by 
+                            third-party, enabling participation in carbon credit markets</li>
+                        <li><strong>Animal Welfare Scoring:</strong> Automated monitoring of handling 
+                            practices, proving premium welfare standards to premium buyers</li>
+                    </ul>
+                </div>
+
+                <div class="cert-card fade-in">
+                    <h3>🌍 International Market Certifications</h3>
+                    <ul>
+                        <li><strong>EU Export Accreditation:</strong> Fast-track pathway to EU-approved 
+                            establishment status through union group certification</li>
+                        <li><strong>Halal Certification:</strong> Australian Halal Authority approved 
+                            processes, essential for Middle East and Southeast Asian markets</li>
+                        <li><strong>USDA Export Standards:</strong> Preparation and verification for 
+                            US market access requirements</li>
+                        <li><strong>Japanese Wagyu Standards:</strong> AUS-MEAT Wagyu grading readiness, 
+                            genetic traceability for premium Japanese buyers</li>
+                        <li><strong>Organic Certification:</strong> Streamlined pathway to ACO/NASAA 
+                            organic certification through union support</li>
+                    </ul>
+                    <p style="margin-top: 1.5rem; padding: 1rem; background: #f0fdf4; border-radius: 8px;">
+                        <strong>Export Premium:</strong> Export-certified livestock command 20-40% 
+                        premiums over domestic-only stock, particularly for Japanese Wagyu and 
+                        EU markets.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="join" class="cta-section">
+        <div class="cta-content fade-in">
+            <h2>Join the Movement. Take Back Control.</h2>
+            <p>47,000 farmers united have the power to transform this industry. The question 
+               is whether you'll be one of the founding members who makes it happen.</p>
+            
+            <div class="cta-benefits">
+                <div class="cta-benefit">
+                    <div class="cta-benefit-icon">🆓</div>
+                    <div class="cta-benefit-text">Free Membership<br>(Founding Members)</div>
+                </div>
+                <div class="cta-benefit">
+                    <div class="cta-benefit-icon">💰</div>
+                    <div class="cta-benefit-text">$13,500+ Annual<br>Savings (avg)</div>
+                </div>
+                <div class="cta-benefit">
+                    <div class="cta-benefit-icon">⚡</div>
+                    <div class="cta-benefit-text">7-Day Payment<br>Guarantee</div>
+                </div>
+                <div class="cta-benefit">
+                    <div class="cta-benefit-icon">🧠</div>
+                    <div class="cta-benefit-text">AI Tools<br>Included</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <a href="#" class="btn-primary" style="background: white; color: var(--accent); margin-right: 1rem; font-size: 1.2rem; padding: 1.5rem 3.5rem;">Join as Founding Member</a>
+                <a href="#" class="btn-secondary" style="font-size: 1.1rem;">Download Prospectus</a>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 1rem; opacity: 0.9;">
+                Limited to first 1,000 farmers. Founding members receive lifetime 0.5% 
+                transaction fees (vs 1.5% standard) and governance voting rights.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>🤝 FarmUnion.AI</h3>
+                <p>Australia's first farmer-owned cooperative powered by AI. Built by farmers, 
+                   for farmers. Taking back control of the $32 billion livestock market through 
+                   unity and technology.</p>
+                <p style="margin-top: 1rem; font-style: italic; opacity: 0.8;">
+                    "Divided we're exploited. United we're unstoppable."
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Union</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Join Movement</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">Governance</a></li>
+                    <li><a href="#">Member Benefits</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">AI Training</a></li>
+                    <li><a href="#">Certification Programs</a></li>
+                    <li><a href="#">Market Reports</a></li>
+                    <li><a href="#">Legal Support</a></li>
+                    <li><a href="#">Tech Documentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Leadership</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FarmUnion.AI Cooperative | Farmer-Owned | Queensland, Australia | 
+               ABN: Pending | Registered Cooperative</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Calculator
+        function calculateSavings() {
+            const sales = parseFloat(document.getElementById('annualSales').value) || 300000;
+            const commission = parseFloat(document.getElementById('commission').value) || 4.5;
+            const delay = parseFloat(document.getElementById('paymentDelay').value) || 45;
+            const cattle = parseFloat(document.getElementById('cattleCount').value) || 200;
+
+            // Commission savings: current rate minus our 0.5%
+            const commissionSavings = sales * ((commission / 100) - 0.005);
+            
+            // Cash flow value: interest on early payment (simple calculation)
+            const dailyInterestRate = 0.05 / 365; // 5% annual rate
+            const cashflowValue = sales * dailyInterestRate * (delay - 7);
+            
+            // Saleyard fee savings: $12/head average
+            const saleyardSavings = cattle * 12;
+            
+            // Total
+            const totalSavings = commissionSavings + cashflowValue + saleyardSavings;
+
+            document.getElementById('commissionSavings').textContent = 
+                '$' + Math.round(commissionSavings).toLocaleString();
+            document.getElementById('cashflowValue').textContent = 
+                '$' + Math.round(cashflowValue).toLocaleString();
+            document.getElementById('totalSavings').textContent = 
+                '$' + Math.round(totalSavings).toLocaleString();
+        }
+
+        // Add event listeners
+        ['annualSales', 'commission', 'paymentDelay', 'cattleCount'].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.addEventListener('input', calculateSavings);
+            }
+        });
+
+        // Initial calculation
+        calculateSavings();
+
+        // Parallax
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

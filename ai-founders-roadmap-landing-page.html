@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Founder's Roadmap: From Idea to First 100 Users - Free Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subheadline {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        .cta-form {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .value-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .social-proof {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .chapters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .chapter-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .chapter-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .guarantee {
+            background: #28a745;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .urgency {
+            background: #ff6b6b;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            animation: shake 2s infinite;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .faq {
+            margin: 40px 0;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            .subheadline {
+                font-size: 18px;
+            }
+            .hero {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HERO SECTION -->
+        <div class="hero">
+            <div class="badge">🔥 BASED ON 50+ SUCCESSFUL AI STARTUPS</div>
+            
+            <h1>The Only Guide That Takes You From AI Idea to First 100 Paying Users in 90 Days</h1>
+            
+            <p class="subheadline">Stop guessing. Start building. Get the exact roadmap that's helped AI founders raise millions and reach profitability 3x faster.</p>
+            
+            <!-- VALUE PROPOSITIONS -->
+            <div class="value-props">
+                <div class="value-item">
+                    <div class="value-icon">⏱️</div>
+                    <div class="value-title">Save 6 Months</div>
+                    <div>Skip the painful trial-and-error that kills most AI startups</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">💰</div>
+                    <div class="value-title">Save $50,000+</div>
+                    <div>Avoid the expensive mistakes 90% of founders make</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🚀</div>
+                    <div class="value-title">60+ Pages</div>
+                    <div>Actionable frameworks, templates, and real case studies</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🎯</div>
+                    <div class="value-title">AI-Specific</div>
+                    <div>Not generic startup advice - built for AI founders</div>
+                </div>
+            </div>
+            
+            <!-- CTA FORM -->
+            <div class="cta-form">
+                <h2 style="text-align: center; margin-bottom: 20px;">Get Your Free Copy Instantly</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 30px;">Join 3,247+ AI founders who are building smarter, not harder</p>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="email">Work Email*</label>
+                        <input type="email" id="email" name="email" placeholder="founder@startup.com" required>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label for="stage">Current Stage*</label>
+                            <select id="stage" name="stage" required>
+                                <option value="">Select your stage...</option>
+                                <option value="idea">Just an idea</option>
+                                <option value="building">Building MVP</option>
+                                <option value="launched">Launched, need users</option>
+                                <option value="scaling">Scaling (10+ users)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="challenge">Biggest Challenge*</label>
+                            <select id="challenge" name="challenge" required>
+                                <option value="">Select challenge...</option>
+                                <option value="technical">Technical/Building</option>
+                                <option value="marketing">Marketing/Growth</option>
+                                <option value="funding">Fundraising</option>
+                                <option value="team">Team/Hiring</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">
+                        Get My Free Roadmap → 
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 15px; font-size: 14px; color: #666;">
+                        🔒 We respect your privacy. Unsubscribe anytime.
+                    </p>
+                </form>
+            </div>
+            
+            <!-- URGENCY -->
+            <div class="urgency">
+                ⚡ 1,247 founders downloaded this week. Price goes to $97 after 5,000 downloads.
+            </div>
+            
+            <!-- SOCIAL PROOF -->
+            <div class="social-proof">
+                <h2 style="text-align: center; margin-bottom: 30px;">What AI Founders Are Saying</h2>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"This guide saved me from making a $100K mistake. Chapter 3 alone helped me validate my idea in 7 days instead of building for 6 months. Now at $25K MRR."</p>
+                    <p class="testimonial-author">— Sarah Chen, Founder of DataSenseAI</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"As a non-technical founder, this was exactly what I needed. The no-code tools section and technical hiring advice helped me launch my MVP in 30 days. Just closed our seed round!"</p>
+                    <p class="testimonial-author">— Marcus Johnson, CEO of TalkFlowAI</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"The launch playbook is gold. Following the Product Hunt and Reddit strategies got us to 500 users in the first week. The templates alone are worth thousands."</p>
+                    <p class="testimonial-author">— Alex Kim, Co-founder of VisionaryAI</p>
+                </div>
+            </div>
+            
+            <!-- WHAT'S INSIDE -->
+            <div style="margin: 60px 0;">
+                <h2 style="text-align: center; margin-bottom: 40px;">What's Inside Your 60-Page Roadmap</h2>
+                
+                <div class="chapters">
+                    <div class="chapter-card">
+                        <div class="chapter-number">1</div>
+                        <h3>The AI Founder's Mindset</h3>
+                        <ul style="color: #666; margin-top: 10px;">
+                            <li>Why "AI-powered" isn't enough</li>
+                            <li>The 80% accuracy principle</li>
+                            <li>Building in public strategies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="chapter-card">
+                        <div class="chapter-number">2</div>
+                        <h3>Idea Validation That Works</h3>
+                        <ul style="color: #666; margin-top: 10px;">
+                            <li>The $100 validation test</li>
+                            <li>20 customer interview questions</li>
+                            <li>Finding your OpenAI-proof niche</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="chapter-card">
+                        <div class="chapter-number">3</div>
+                        <h3>Technical Foundation</h3>
+                        <ul style="color: #666; margin-top: 10px;">
+                            <li>Build vs buy decision tree</li>
+                            <li>15 no-code AI tools compared</li>
+                            <li>Avoiding the $10K API bill trap</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="chapter-card">
+                        <div class="chapter-number">4</div>
+                        <h3>Building Your AI MVP</h3>
+                        <ul style="color: #666; margin-top: 10px;">
+                            <li>The 30-day build sprint</li>
+                            <li>Prompt engineering secrets</li>
+                            <li>Unit economics calculator</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="chapter-card">
+                        <div class="chapter-number">5</div>
+                        <h3>Launch Week Playbook</h3>
+                        <ul style="color: #666; margin-top: 10px;">
+                            <li>Product Hunt domination</li>
+                            <li>Hacker News strategy</li>
+                            <li>Reddit without getting banned</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="chapter-card">
+                        <div class="chapter-number">6</div>
+                        <h3>First 100 Users</h3>
+                        <ul style="color: #666; margin-top: 10px;">
+                            <li>Manual recruitment that scales</li>
+                            <li>Community growth hacks</li>
+                            <li>Cold outreach that converts</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <p style="font-size: 18px; color: #666;">Plus 4 bonus chapters, templates, worksheets, and resource directory!</p>
+                </div>
+            </div>
+            
+            <!-- STATS -->
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">AI Startups Helped</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">$5M+</div>
+                    <div class="stat-label">Funding Raised</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3,247</div>
+                    <div class="stat-label">Founders Reading</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.9/5</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+            </div>
+            
+            <!-- BONUSES -->
+            <div style="background: #f0f4ff; padding: 40px; border-radius: 15px; margin: 40px 0;">
+                <h2 style="text-align: center; margin-bottom: 30px;">🎁 Free Bonus Resources (Worth $5,000+)</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">📊</div>
+                        <strong>Business Model Canvas</strong>
+                        <p style="font-size: 14px; color: #666;">AI-specific template</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">💼</div>
+                        <strong>Pitch Deck Template</strong>
+                        <p style="font-size: 14px; color: #666;">30 slides that convert</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">📈</div>
+                        <strong>Financial Model</strong>
+                        <p style="font-size: 14px; color: #666;">SaaS calculator included</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">📝</div>
+                        <strong>Legal Templates</strong>
+                        <p style="font-size: 14px; color: #666;">Terms, privacy, contracts</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">🔧</div>
+                        <strong>No-Code Toolkit</strong>
+                        <p style="font-size: 14px; color: #666;">25 tools compared</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">👥</div>
+                        <strong>Community Access</strong>
+                        <p style="font-size: 14px; color: #666;">1,000+ AI founders</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GUARANTEE -->
+            <div class="guarantee">
+                <h2 style="margin-bottom: 15px;">100% Value Guarantee</h2>
+                <p style="font-size: 18px;">If you don't find at least 10 actionable insights that could save you months of time or thousands of dollars, we'll personally help you with your specific challenge. No questions asked.</p>
+            </div>
+            
+            <!-- FAQ -->
+            <div class="faq">
+                <h2 style="text-align: center; margin-bottom: 30px;">Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is this really free?</div>
+                    <div class="faq-answer">Yes! The guide is 100% free for the first 5,000 downloads. After that, it will be $97. We're doing this to build our email list and establish AI Ignition Hub as the go-to resource for AI founders.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">I'm non-technical. Will I understand this?</div>
+                    <div class="faq-answer">Absolutely! The guide is written specifically with non-technical founders in mind. We explain all technical concepts in plain English and include a complete glossary. Plus, Chapter 3 is dedicated entirely to helping non-technical founders navigate the technical landscape.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How is this different from other startup guides?</div>
+                    <div class="faq-answer">This is the only guide specifically for AI startups. We cover unique challenges like API costs, prompt engineering, competing with OpenAI, AI-specific pricing models, and managing user expectations for AI products. Generic startup advice doesn't address these critical issues.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What if I've already launched but have no users?</div>
+                    <div class="faq-answer">Perfect! Chapters 5-8 are specifically about user acquisition and growth. You'll learn our multi-channel launch playbook, community growth strategies, and the exact tactics that took startups from 0 to 100 users in 30 days.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Will you spam me with emails?</div>
+                    <div class="faq-answer">No. You'll receive the guide immediately, then a 7-email series over 14 days with additional tips and case studies. After that, we send valuable content twice per week. You can unsubscribe anytime with one click.</div>
+                </div>
+            </div>
+            
+            <!-- FINAL CTA -->
+            <div style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 50px; border-radius: 15px; margin: 40px 0; color: white; text-align: center;">
+                <h2 style="margin-bottom: 20px; color: white;">Stop Guessing. Start Growing.</h2>
+                <p style="font-size: 18px; margin-bottom: 30px;">Join 3,247+ AI founders who are building successful startups with this proven roadmap.</p>
+                <button class="cta-button" style="background: white; color: #667eea; max-width: 400px;">
+                    Get Your Free Roadmap Now →
+                </button>
+                <p style="margin-top: 20px; font-size: 14px;">⏰ Limited time: Free for next 1,753 downloads only</p>
+            </div>
+            
+            <!-- ABOUT THE AUTHOR -->
+            <div style="background: #f8f9fa; padding: 40px; border-radius: 15px; margin: 40px 0;">
+                <h3 style="margin-bottom: 20px;">About AI Ignition Hub</h3>
+                <p style="color: #666; line-height: 1.8;">
+                    We're not just another accelerator that gives advice. We're the only program that actually builds alongside AI founders. Our team has helped 50+ AI startups go from idea to funding, generating over $5M in combined revenue and raising millions in venture capital.
+                </p>
+                <p style="color: #666; line-height: 1.8; margin-top: 15px;">
+                    This guide distills everything we've learned into a step-by-step roadmap. Whether you're non-technical with an idea or a developer who can't market, this guide will help you avoid the mistakes that kill 90% of AI startups.
+                </p>
+            </div>
+            
+            <!-- SCARCITY -->
+            <div style="text-align: center; padding: 30px; background: #fff3cd; border-radius: 10px; margin: 20px 0;">
+                <p style="font-size: 18px; color: #856404;">
+                    <strong>⚠️ Note:</strong> This guide will become a paid product ($97) after 5,000 downloads.<br>
+                    <strong>3,247 downloaded so far.</strong> Get yours free while you can.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>© 2024 AI Ignition Hub | Privacy Policy | Terms of Service</p>
+        <p style="margin-top: 10px; font-size: 14px;">Questions? Email us at hello@aiignitionhub.com</p>
+    </div>
+    
+    <script>
+        // Simple form handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Check your email for the guide. (In production, this would submit to your email service)');
+        });
+        
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            if(button.type !== 'submit') {
+                button.addEventListener('click', function() {
+                    document.querySelector('.cta-form').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

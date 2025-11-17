@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeNet.AI - AI-Powered Community Security for Victorian Suburbs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #dc2626;
+            --highlight: #ef4444;
+            --blue: #3b82f6;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --gold: #fbbf24;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--primary);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            opacity: 0.9;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight);
+            opacity: 1;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(220, 38, 38, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: white;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--highlight), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(220, 38, 38, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1s ease 0.8s both;
+        }
+
+        .security-graphic {
+            width: 100%;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .security-pulse {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+        }
+
+        .security-icon {
+            font-size: 10rem;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .tech-badge {
+            position: absolute;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .badge-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .badge-2 { top: 25%; right: 10%; animation-delay: 1s; }
+        .badge-3 { bottom: 20%; left: 10%; animation-delay: 2s; }
+        .badge-4 { bottom: 15%; right: 5%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: white;
+            padding: 6rem 3rem;
+        }
+
+        .section-header {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .problem-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .problem-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 3rem;
+        }
+
+        .solution-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .solution-grid {
+            display: grid;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .solution-feature {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .solution-feature:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+        }
+
+        .solution-icon {
+            font-size: 4rem;
+            line-height: 1;
+        }
+
+        .solution-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .solution-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .detail-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--success);
+        }
+
+        .detail-box p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Global Practices */
+        .practices-section {
+            background: white;
+            padding: 6rem 3rem;
+        }
+
+        .practices-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .practices-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .practice-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--blue);
+            transition: all 0.4s ease;
+        }
+
+        .practice-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .practice-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .practice-flag {
+            font-size: 3rem;
+        }
+
+        .practice-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+        }
+
+        .practice-card h4 {
+            font-size: 1.2rem;
+            color: var(--blue);
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .practice-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .practice-highlights {
+            background: #f0f9ff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .practice-highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .practice-highlights li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .practice-highlights li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Pricing */
+        .pricing-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 6rem 3rem;
+        }
+
+        .pricing-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--highlight));
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.popular {
+            border: 3px solid var(--accent);
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 1.5rem 0;
+        }
+
+        .price span {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Tech Stack */
+        .tech-section {
+            background: var(--primary);
+            color: white;
+            padding: 6rem 3rem;
+        }
+
+        .tech-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .tech-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-category h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .tech-items {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 3px solid var(--highlight);
+        }
+
+        .tech-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .tech-item p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Launch Strategy */
+        .launch-section {
+            background: white;
+            padding: 6rem 3rem;
+        }
+
+        .launch-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent), var(--blue));
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 2;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: auto;
+            right: 50%;
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--accent);
+        }
+
+        .timeline-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-content li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .timeline-content li::before {
+            content: '→';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 6rem 3rem;
+        }
+
+        .trust-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .trust-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .trust-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+        }
+
+        .trust-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .trust-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .trust-card p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            padding: 6rem 3rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .cta-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .cta-stat {
+            text-align: center;
+        }
+
+        .cta-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a1a;
+            color: white;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            line-height: 1.8;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--highlight);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .practices-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .solution-feature {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🚨</span> SafeNet.AI
+            </div>
+            <ul class="nav-links">
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#practices">Global Insights</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#launch">Launch Plan</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Join Pilot Program</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    Community-Powered <br>
+                    <span class="gradient-text">AI Security</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Transforming Victorian suburbs into safe, connected communities with 
+                    AI-enhanced security, instant emergency response, and 24/7 peace of mind.
+                </p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">&lt;10min</div>
+                        <div class="hero-stat-label">Response Time</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">70%</div>
+                        <div class="hero-stat-label">False Alarm Reduction</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">24/7</div>
+                        <div class="hero-stat-label">AI Monitoring</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">200+</div>
+                        <div class="hero-stat-label">Pilot Households</div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Start Free Trial</a>
+                    <a href="#solution" class="btn-secondary">See How It Works</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="security-graphic">
+                    <div class="security-pulse"></div>
+                    <div class="security-icon">🛡️</div>
+                    <div class="tech-badge badge-1">🎤 AI Panic Button</div>
+                    <div class="tech-badge badge-2">📹 Smart CCTV</div>
+                    <div class="tech-badge badge-3">🤖 Anomaly Detection</div>
+                    <div class="tech-badge badge-4">🚓 Smart Dispatch</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="section-header fade-in">
+            <h2>The Challenge Victorian Communities Face</h2>
+            <p>Rising crime rates in suburban areas demand smarter, community-led solutions 
+               beyond traditional policing.</p>
+        </div>
+        <div class="problem-grid">
+            <div class="problem-card fade-in">
+                <div class="problem-icon">📈</div>
+                <h3>Rising Suburban Crime</h3>
+                <p>Melbourne's western and northern growth corridors experiencing increased 
+                   burglary and assault rates. Traditional reactive policing struggles to 
+                   keep pace with urban expansion.</p>
+            </div>
+            <div class="problem-card fade-in">
+                <div class="problem-icon">⏱️</div>
+                <h3>Slow Emergency Response</h3>
+                <p>Police response times averaging 15-30 minutes in outer suburbs. Critical 
+                   window for intervention often missed, leaving residents vulnerable during 
+                   emergencies.</p>
+            </div>
+            <div class="problem-card fade-in">
+                <div class="problem-icon">🔌</div>
+                <h3>Disconnected Security Systems</h3>
+                <p>Households invest in Ring cameras, alarms, and sensors but footage remains 
+                   siloed. No community-level coordination or intelligent threat detection.</p>
+            </div>
+            <div class="problem-card fade-in">
+                <div class="problem-icon">👥</div>
+                <h3>Failed Neighbourhood Watch</h3>
+                <p>Traditional neighbourhood watch programs suffer from low engagement. Manual 
+                   coordination and alert fatigue lead to declining participation over time.</p>
+            </div>
+            <div class="problem-card fade-in">
+                <div class="problem-icon">💰</div>
+                <h3>Expensive Private Security</h3>
+                <p>Professional patrol services cost $500-$1,500/month per household—prohibitively 
+                   expensive. Group purchasing still leaves costs too high for most families.</p>
+            </div>
+            <div class="problem-card fade-in">
+                <div class="problem-icon">🚫</div>
+                <h3>False Alarm Problem</h3>
+                <p>Existing alarm systems generate 90%+ false positives. Emergency services 
+                   desensitized, real threats overlooked, and homeowners pay false alarm fees.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution-section">
+        <div class="solution-container">
+            <div class="section-header fade-in">
+                <h2>The SafeNet.AI Solution</h2>
+                <p>A subscription-based neighbourhood security platform integrating AI panic buttons, 
+                   shared CCTV networks, and intelligent patrol dispatch—inspired by proven global models.</p>
+            </div>
+            <div class="solution-grid">
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">🔴</div>
+                    <div class="solution-content">
+                        <h3>AI Panic Button</h3>
+                        <p>One-press emergency alert sends GPS location, audio, and video stream to 
+                           our AI command center. Smart triage distinguishes real emergencies from 
+                           false alarms with 70%+ accuracy, ensuring rapid response when it matters.</p>
+                        <div class="solution-details">
+                            <div class="detail-box">
+                                <h4>Wearable Devices</h4>
+                                <p>Bracelet or pendant form factors, 24/7 wearability</p>
+                            </div>
+                            <div class="detail-box">
+                                <h4>Mobile App Integration</h4>
+                                <p>Smartphone backup, location tracking, video streaming</p>
+                            </div>
+                            <div class="detail-box">
+                                <h4>AI Triage System</h4>
+                                <p>Context analysis, automatic escalation, police API integration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">📹</div>
+                    <div class="solution-content">
+                        <h3>Shared Community CCTV Network</h3>
+                        <p>Voluntary opt-in camera sharing from homes and businesses. AI monitors 
+                           for anomalies: loitering near entry points, violent gestures, vehicles 
+                           circling multiple times. Real-time alerts with anonymized heat maps.</p>
+                        <div class="solution-details">
+                            <div class="detail-box">
+                                <h4>YOLOv8 Detection</h4>
+                                <p>Person/vehicle detection, pose estimation, activity recognition</p>
+                            </div>
+                            <div class="detail-box">
+                                <h4>Privacy-Preserving</h4>
+                                <p>Edge processing, selective recording, user-controlled access</p>
+                            </div>
+                            <div class="detail-box">
+                                <h4>Community Dashboard</h4>
+                                <p>Live safety status, incident alerts, crime trend analytics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">🚓</div>
+                    <div class="solution-content">
+                        <h3>Smart Patrol Dispatch</h3>
+                        <p>AI-driven dispatch system allocates nearest security responder—patrol 
+                           vehicle, drone, or guard. Partnership model with existing security firms 
+                           ensures &lt;10 minute guaranteed response in coverage zones.</p>
+                        <div class="solution-details">
+                            <div class="detail-box">
+                                <h4>Response-as-a-Service</h4>
+                                <p>Partner with patrol companies, no owned guards</p>
+                            </div>
+                            <div class="detail-box">
+                                <h4>Tiered Response</h4>
+                                <p>Basic: 20min, Plus: 10min, Premium: 5min guaranteed</p>
+                            </div>
+                            <div class="detail-box">
+                                <h4>Drone Integration</h4>
+                                <p>Pilot programs for autonomous aerial response (CASA approved)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">🛡️</div>
+                    <div class="solution-content">
+                        <h3>Insurance-Linked Incentives</h3>
+                        <p>Partner with major Australian insurers (RACV, AAMI, Suncorp) to offer 
+                           reduced premiums for SafeNet subscribers. Verified security measures 
+                           reduce claims, creating win-win for insurers and homeowners.</p>
+                        <div class="solution-details">
+                            <div class="detail-box">
+                                <h4>Premium Discounts</h4>
+                                <p>10-20% home insurance reduction, verified device usage</p>
+                            </div>
+                            <div class="detail-box">
+                                <h4>Claims Prevention</h4>
+                                <p>Average burglary claim: $4,500, assault claim: $12,000</p>
+                            </div>
+                            <div class="detail-box">
+                                <h4>API Integration</h4>
+                                <p>Real-time device status verification, automated discounts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-feature fade-in">
+                    <div class="solution-icon">🧠</div>
+                    <div class="solution-content">
+                        <h3>Predictive Crime Analytics</h3>
+                        <p>AI dashboards track unusual activity patterns: spikes in assaults, 
+                           burglary clusters, suspicious vehicle movements. Anonymized data guides 
+                           resource allocation without invasive surveillance.</p>
+                        <div class="solution-details">
+                            <div class="detail-box">
+                                <h4>Hotspot Detection</h4>
+                                <p>Identify crime concentration areas, optimize patrol routes</p>
+                            </div>
+                            <div class="detail-box">
+                                <h4>Time-Series Analysis</h4>
+                                <p>Predict high-risk periods, pre-deploy resources</p>
+                            </div>
+                            <div class="detail-box">
+                                <h4>Community Transparency</h4>
+                                <p>Public safety reports, effectiveness metrics, ROI tracking</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Practices -->
+    <section id="practices" class="practices-section">
+        <div class="practices-container">
+            <div class="section-header fade-in">
+                <h2>Proven Global Security Models</h2>
+                <p>SafeNet.AI synthesizes best practices from successful implementations worldwide, 
+                   adapted for Australian suburbs and privacy expectations.</p>
+            </div>
+            <div class="practices-grid">
+                <div class="practice-card fade-in">
+                    <div class="practice-header">
+                        <div class="practice-flag">🇺🇸</div>
+                        <h3>United States</h3>
+                    </div>
+                    <h4>Gated Community Model</h4>
+                    <p>While socially divisive and expensive ($800-$2,000/month per household), 
+                       US gated communities demonstrate proven effectiveness of layered security: 
+                       controlled access, 24/7 cameras, private guards.</p>
+                    <div class="practice-highlights">
+                        <ul>
+                            <li>Crime reduction: 30-50% vs comparable open neighborhoods</li>
+                            <li>Community-funded infrastructure (cameras, gates, patrol vehicles)</li>
+                            <li>Professional security management with resident oversight</li>
+                            <li>Property value premium: 20-30% higher than surrounding areas</li>
+                        </ul>
+                    </div>
+                    <h4>Campus Security Innovation</h4>
+                    <p>US universities pilot autonomous ground robots and AI surveillance for 
+                       late-night safety. MIT, UC Berkeley deploy "security companions" that 
+                       escort students and detect anomalies.</p>
+                </div>
+
+                <div class="practice-card fade-in">
+                    <div class="practice-header">
+                        <div class="practice-flag">🇬🇧</div>
+                        <h3>United Kingdom</h3>
+                    </div>
+                    <h4>Safe Street Schemes</h4>
+                    <p>Centralized CCTV networks integrated with local policing. Residents use 
+                       mobile apps to report suspicious activity directly to command centers, 
+                       creating two-way information flow.</p>
+                    <div class="practice-highlights">
+                        <ul>
+                            <li>London's Ring of Steel: 691,000 CCTV cameras, sophisticated analytics</li>
+                            <li>Community-led CCTV sharing networks in suburban areas</li>
+                            <li>Average response time: 8-12 minutes for high-priority incidents</li>
+                            <li>40-60% crime reduction in coverage areas (Home Office data)</li>
+                        </ul>
+                    </div>
+                    <h4>Neighbourhood Watch 2.0</h4>
+                    <p>UK programs integrate WhatsApp groups, automated police alerts, and shared 
+                       Ring doorbell footage. Digital engagement improves participation rates 3-5x 
+                       vs traditional models.</p>
+                </div>
+
+                <div class="practice-card fade-in">
+                    <div class="practice-header">
+                        <div class="practice-flag">🇸🇬</div>
+                        <h3>Singapore & Asia</h3>
+                    </div>
+                    <h4>Smart City Infrastructure</h4>
+                    <p>Singapore, Seoul, and Shenzhen deploy AI-powered surveillance: facial 
+                       recognition, behavior anomaly detection, predictive policing. Privacy 
+                       trade-offs accepted for near-zero street crime.</p>
+                    <div class="practice-highlights">
+                        <ul>
+                            <li>Singapore: 90,000 cameras + facial recognition by 2025</li>
+                            <li>Smart poles with emergency intercoms, cameras, sensors</li>
+                            <li>Real-time crime analytics, 3-5 minute police response</li>
+                            <li>Crime rate: 0.15 per 1,000 people (world's lowest)</li>
+                        </ul>
+                    </div>
+                    <h4>Drone Patrols</h4>
+                    <p>Dubai Police operate autonomous drones for night-time monitoring in 
+                       residential areas. Computer vision detects intrusions, suspicious gatherings, 
+                       and traffic incidents.</p>
+                </div>
+
+                <div class="practice-card fade-in">
+                    <div class="practice-header">
+                        <div class="practice-flag">🇿🇦</div>
+                        <h3>South Africa</h3>
+                    </div>
+                    <h4>Private Response Ecosystem</h4>
+                    <p>Due to under-resourced police, private armed response services dominate. 
+                       Companies like Fidelity ADT, Namola create "Uber for emergency security"—
+                       apps link residents directly to patrol teams.</p>
+                    <div class="practice-highlights">
+                        <ul>
+                            <li>80% of middle-class households subscribe to private security</li>
+                            <li>Average response: 3-7 minutes (faster than police)</li>
+                            <li>Namola app: 1.5M users, GPS-based panic button, live tracking</li>
+                            <li>Integration with medical response, roadside assistance</li>
+                        </ul>
+                    </div>
+                    <h4>Community WhatsApp Networks</h4>
+                    <p>Grassroots security groups coordinate via WhatsApp—real-time alerts, 
+                       vehicle descriptions, suspect photos. Effective but chaotic without 
+                       AI moderation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="pricing-container">
+            <div class="section-header fade-in">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that fits your family's security needs. All plans include 
+                   AI panic button and community app access.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>Basic</h3>
+                    <div class="price">$25<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>AI panic button device (wearable or app)</li>
+                        <li>Community safety dashboard</li>
+                        <li>Incident alerts in your suburb</li>
+                        <li>Emergency contact notifications</li>
+                        <li>Basic police API integration</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="display: block; text-align: center; margin-top: 2rem;">Get Started</a>
+                </div>
+
+                <div class="pricing-card popular fade-in">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Plus</h3>
+                    <div class="price">$50<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Everything in Basic</li>
+                        <li>Shared CCTV integration (opt-in)</li>
+                        <li>AI anomaly detection on feeds</li>
+                        <li>Patrol coverage (10-minute response)</li>
+                        <li>Crime trend analytics</li>
+                        <li>Insurance discount eligibility</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="display: block; text-align: center; margin-top: 2rem;">Get Started</a>
+                </div>
+
+                <div class="pricing-card fade-in">
+                    <h3>Premium</h3>
+                    <div class="price">$100<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Everything in Plus</li>
+                        <li>Guaranteed 5-minute response time</li>
+                        <li>15-20% insurance premium reduction</li>
+                        <li>Advanced AI features (predictive alerts)</li>
+                        <li>Dedicated account manager</li>
+                        <li>Quarterly safety assessments</li>
+                        <li>24/7 premium support</li>
+                        <li>Drone patrol pilot access (select areas)</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary" style="display: block; text-align: center; margin-top: 2rem;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-section">
+        <div class="tech-container">
+            <div class="section-header fade-in">
+                <h2>Built on Proven Technology</h2>
+                <p>Enterprise-grade AI and security infrastructure designed for reliability, 
+                   privacy, and scalability.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-category fade-in">
+                    <h3>Edge AI for CCTV</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <h4>YOLOv8 Detection</h4>
+                            <p>Real-time person/vehicle detection running on low-power NVRs. 
+                               30+ FPS processing, 95%+ accuracy for security events.</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>OpenVINO Optimization</h4>
+                            <p>Intel toolkit for edge AI deployment. Efficient inference on 
+                               consumer-grade hardware, no cloud dependency.</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>Privacy-First Architecture</h4>
+                            <p>All processing on local NVRs. Selective cloud upload for verified 
+                               alerts only. User controls retention policies.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category fade-in">
+                    <h3>Wearable Panic Devices</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <h4>OEM White-Label Devices</h4>
+                            <p>Chinese manufacturers (Shenzhen market) provide proven hardware. 
+                               GPS + LTE + audio/video streaming at $15-$30 wholesale.</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>Multi-Day Battery Life</h4>
+                            <p>Low-power standby mode, instant wake on button press. USB-C 
+                               charging, 3-7 day runtime depending on usage.</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>Waterproof & Durable</h4>
+                            <p>IP67 rating for water resistance. Shock-resistant design for 
+                               daily wear during sports, shower, etc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category fade-in">
+                    <h3>AI Command Centre</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <h4>vLLM Triage System</h4>
+                            <p>Large language model analyzes panic button context—audio, video, 
+                               location, time—to classify severity and route appropriately.</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>Anomaly Detection Models</h4>
+                            <p>Trained on security footage to identify loitering, trespassing, 
+                               violent gestures. Reduces false alarms 70%+ vs traditional motion.</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>Event Routing & Dispatch</h4>
+                            <p>Real-time allocation of nearest responder. Queue management, 
+                               priority escalation, automated status updates to users.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category fade-in">
+                    <h3>Community App & Backend</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <h4>React Native Mobile App</h4>
+                            <p>iOS and Android with unified codebase. Push notifications, 
+                               background location, video streaming, emergency contacts.</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>Supabase + Postgres Backend</h4>
+                            <p>Real-time database, authentication, storage. Row-level security, 
+                               automatic API generation, managed infrastructure.</p>
+                        </div>
+                        <div class="tech-item">
+                            <h4>AI Inference APIs</h4>
+                            <p>Dedicated GPU instances for video analysis, LLM triage. Auto-scaling 
+                               to handle alert spikes during incidents.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Launch Strategy -->
+    <section id="launch" class="launch-section">
+        <div class="launch-container">
+            <div class="section-header fade-in">
+                <h2>90-Day Launch Roadmap</h2>
+                <p>Aggressive but achievable timeline to pilot program, validated by South African 
+                   rapid deployment models and Australian community readiness.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-number">1</div>
+                        <h3>Pilot Program Setup (Months 1-2)</h3>
+                        <p>Select target suburb with supportive council and demonstrated crime 
+                           concern. Tarneit or Craigieburn ideal—high growth, active community 
+                           groups, recent crime spikes.</p>
+                        <ul>
+                            <li>Onboard 200 households at subsidized $10/month rate</li>
+                            <li>Partner with 2 local patrol firms (existing relationships)</li>
+                            <li>Deploy 50 panic button devices, 100 mobile app users</li>
+                            <li>Install AI command center in Melbourne CBD office</li>
+                            <li>Recruit 2 dispatch operators (24/7 coverage, rotating shifts)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-number">2</div>
+                        <h3>Proof of Safety & Trust (Months 3-4)</h3>
+                        <p>Demonstrate tangible security improvements with data-driven metrics. 
+                           Build case studies for expansion and investor pitches.</p>
+                        <ul>
+                            <li>Track "time to response" metrics (target: 85%+ under 10 minutes)</li>
+                            <li>Document prevented break-ins, assisted emergencies (goal: 5+ cases)</li>
+                            <li>Measure false alarm reduction vs traditional systems</li>
+                            <li>Collect resident testimonials, NPS scores (target: 70+ NPS)</li>
+                            <li>Publish quarterly safety report for pilot community</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-number">3</div>
+                        <h3>Scale-Up Phase (Months 5-8)</h3>
+                        <p>Expand to 10 suburbs across Melbourne's growth corridors. Activate 
+                           insurance partnerships and explore drone pilot programs.</p>
+                        <ul>
+                            <li>Expand to 10 suburbs (western/northern Melbourne priority)</li>
+                            <li>Activate insurance API integrations (RACV, AAMI negotiations)</li>
+                            <li>Launch Plus tier with CCTV integration (target: 40% adoption)</li>
+                            <li>Explore drone patrol pilots (CASA approval process)</li>
+                            <li>Hire 5 additional dispatch operators, 2 customer success reps</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-number">4</div>
+                        <h3>Regional Expansion (Months 9-12)</h3>
+                        <p>Victoria-wide rollout with focus on regional centers. Prepare for 
+                           interstate expansion to NSW and Queensland.</p>
+                        <ul>
+                            <li>Expand to Geelong, Ballarat, Bendigo (regional Victoria)</li>
+                            <li>Interstate pilot in Sydney's western suburbs (Penrith, Campbelltown)</li>
+                            <li>Launch Premium tier with guaranteed response times</li>
+                            <li>Partner with national insurers for standardized discounts</li>
+                            <li>Series A fundraising ($5-10M) for national scaling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Safety -->
+    <section class="trust-section">
+        <div class="trust-container">
+            <div class="section-header fade-in">
+                <h2>Trust, Safety & Compliance</h2>
+                <p>We work closely with Victoria Police, councils, and privacy regulators to 
+                   ensure SafeNet.AI augments—never bypasses—official channels.</p>
+            </div>
+            <div class="trust-grid">
+                <div class="trust-card fade-in">
+                    <div class="trust-icon">🔐</div>
+                    <h3>End-to-End Encryption</h3>
+                    <p>All panic button transmissions, CCTV feeds, and user data encrypted with 
+                       AES-256. Zero-knowledge architecture—SafeNet cannot decrypt user data.</p>
+                </div>
+                <div class="trust-card fade-in">
+                    <div class="trust-icon">📋</div>
+                    <h3>Privacy Compliance</h3>
+                    <p>Full compliance with Australian Privacy Principles (APPs), GDPR-equivalent 
+                       standards. Opt-in only, transparent data usage, user-controlled retention.</p>
+                </div>
+                <div class="trust-card fade-in">
+                    <div class="trust-icon">🚔</div>
+                    <h3>Police Collaboration</h3>
+                    <p>API integration with Victoria Police CAD systems (where permitted). 
+                       Automatic handoff for criminal matters, evidence preservation protocols.</p>
+                </div>
+                <div class="trust-card fade-in">
+                    <div class="trust-icon">🏛️</div>
+                    <h3>Council Partnerships</h3>
+                    <p>Work with local councils for street lighting integration, smart pole 
+                       deployments, and public safety grants. No surveillance state—community owned.</p>
+                </div>
+                <div class="trust-card fade-in">
+                    <div class="trust-icon">⚖️</div>
+                    <h3>Regulatory Oversight</h3>
+                    <p>Licensed security operations, insured response teams, CASA-approved drone 
+                       pilots. Annual audits by independent privacy and security firms.</p>
+                </div>
+                <div class="trust-card fade-in">
+                    <div class="trust-icon">🤝</div>
+                    <h3>Community Governance</h3>
+                    <p>Resident advisory boards for each suburb. Transparent decision-making on 
+                       feature rollouts, data retention policies, and response protocols.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content fade-in">
+            <h2>Join the Pilot Program</h2>
+            <p>Be among the first 200 households to experience AI-powered community security. 
+               Subsidized pricing, direct influence on product development, and priority access 
+               to premium features.</p>
+            <div class="cta-stats">
+                <div class="cta-stat">
+                    <div class="cta-stat-value">$10/mo</div>
+                    <div class="cta-stat-label">Pilot Pricing</div>
+                </div>
+                <div class="cta-stat">
+                    <div class="cta-stat-value">200</div>
+                    <div class="cta-stat-label">Total Spots</div>
+                </div>
+                <div class="cta-stat">
+                    <div class="cta-stat-value">6 mo</div>
+                    <div class="cta-stat-label">Program Length</div>
+                </div>
+                <div class="cta-stat">
+                    <div class="cta-stat-value">Free</div>
+                    <div class="cta-stat-label">Panic Device</div>
+                </div>
+            </div>
+            <div style="margin-top: 2rem;">
+                <a href="#contact" class="btn-primary" style="background: white; color: var(--accent); margin-right: 1rem;">Apply for Pilot</a>
+                <a href="#" class="btn-secondary">Download Info Pack</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>🚨 SafeNet.AI</h3>
+                <p>Community-powered AI security for Victorian suburbs. Making neighbourhoods 
+                   safer, together. Built in Melbourne for Australia.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul class="footer-links">
+                    <li><a href="#solution">How It Works</a></li>
+                    <li><a href="#practices">Global Insights</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#launch">Launch Plan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Kit</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SafeNet.AI | Melbourne, Victoria, Australia | 
+               Community-Powered AI Security</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

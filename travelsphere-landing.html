@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelSphere - AI-Powered Family Travel Planning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 20px 0;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .cta-button {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '✈️';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: 50px;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #dbeafe 0%, #e9d5ff 100%);
+            color: #2563eb;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            color: #1a1a1a;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+            animation: floatPhone 3s ease-in-out infinite;
+        }
+
+        @keyframes floatPhone {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .phone-frame {
+            width: 320px;
+            height: 650px;
+            background: #1a1a1a;
+            border-radius: 45px;
+            padding: 15px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            margin: 0 auto;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #dbeafe 0%, #ffffff 100%);
+            border-radius: 35px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen-content {
+            padding: 40px 20px 20px;
+        }
+
+        .screen-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .screen-header h3 {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .screen-header p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .destination-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .destination-card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 12px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .dest-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #dbeafe 0%, #e9d5ff 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .dest-info h4 {
+            font-size: 13px;
+            margin-bottom: 2px;
+        }
+
+        .dest-info p {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .problem-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .problem-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .problem-stat {
+            font-size: 32px;
+            font-weight: 800;
+            color: #dc2626;
+            margin-top: 15px;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #2563eb;
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .feature-card h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-list li:before {
+            content: '✓';
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* AI Section */
+        .ai-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+        }
+
+        .ai-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .ai-visual {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ai-step {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .ai-step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .ai-step h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .ai-step p {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #2563eb;
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.07);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .pricing-card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .pricing-description {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .price {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .price-period {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            color: #666;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .pricing-features li:before {
+            content: '✓';
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .final-cta h2 {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .app-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .app-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .app-badge:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .app-badge-icon {
+            font-size: 32px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #60a5fa;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .ai-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .problem-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .final-cta h2 {
+                font-size: 36px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">🌍</div>
+                    <span>TravelSphere</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#testimonials">Reviews</a>
+                    <a href="#cta" class="cta-button">Get Started Free</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        🚀 Now Live in 5 European Cities
+                    </div>
+                    <h1>
+                        Your Family's<br/>
+                        <span class="gradient-text">AI Travel Companion</span>
+                    </h1>
+                    <p>
+                        Stop juggling 38 websites and 62 hours of planning. TravelSphere learns your family's preferences and delivers personalized trip recommendations in minutes, not days.
+                    </p>
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                        <a href="#pricing" class="cta-button" style="font-size: 18px; padding: 16px 36px;">Start Free Trial</a>
+                        <a href="#how-it-works" style="padding: 16px 36px; background: white; color: #2563eb; border: 2px solid #2563eb; border-radius: 10px; font-weight: 600; text-decoration: none; transition: all 0.3s;">Watch Demo</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">62hr</div>
+                            <div class="stat-label">Saved per Trip</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3x</div>
+                            <div class="stat-label">More Relevant Results</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">€37B</div>
+                            <div class="stat-label">Market Opportunity</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="screen-content">
+                                    <div class="screen-header">
+                                        <h3>Family Trips for You</h3>
+                                        <p>Based on your preferences</p>
+                                    </div>
+                                    <div class="destination-cards">
+                                        <div class="destination-card">
+                                            <div class="dest-icon">🏰</div>
+                                            <div class="dest-info">
+                                                <h4>Barcelona Beach Week</h4>
+                                                <p>Perfect for kids 5-12 • €1,890</p>
+                                            </div>
+                                        </div>
+                                        <div class="destination-card" style="animation-delay: 0.2s;">
+                                            <div class="dest-icon">🎡</div>
+                                            <div class="dest-info">
+                                                <h4>Paris Adventure</h4>
+                                                <p>Cultural + Fun • €2,240</p>
+                                            </div>
+                                        </div>
+                                        <div class="destination-card" style="animation-delay: 0.4s;">
+                                            <div class="dest-icon">🌊</div>
+                                            <div class="dest-info">
+                                                <h4>Amsterdam Canal Tour</h4>
+                                                <p>Relaxed family pace • €1,650</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <div class="section-header">
+                <h2>Planning Family Vacations is Exhausting</h2>
+                <p>European families face overwhelming complexity when organizing trips</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">😫</div>
+                    <h3>Too Many Websites</h3>
+                    <p>Families juggle an average of 38 different websites just to compare flights, hotels, and activities.</p>
+                    <div class="problem-stat">38 Sites</div>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">⏰</div>
+                    <h3>Massive Time Waste</h3>
+                    <p>The average family spends 62 hours planning a single vacation—nearly 8 full workdays!</p>
+                    <div class="problem-stat">62 Hours</div>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">😤</div>
+                    <h3>High Frustration</h3>
+                    <p>67% of families report frustration with existing travel platforms that don't understand family needs.</p>
+                    <div class="problem-stat">67%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Your AI Travel Assistant</h2>
+                <p>Personalized family travel planning that gets smarter with every search</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI That Learns Your Family</h3>
+                    <p>Our AI creates a unique family profile understanding ages, interests, budget, and travel style—getting smarter with each trip you plan.</p>
+                    <ul class="feature-list">
+                        <li>Remembers kids' ages and preferences</li>
+                        <li>Learns your budget comfort zone</li>
+                        <li>Tracks dietary restrictions</li>
+                        <li>Adapts to mobility needs</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">✈️</div>
+                    <h3>Smart Flight Search</h3>
+                    <p>Find the best family-friendly flights with our intelligent ranking system that considers layovers, timing, and kid-friendly airlines.</p>
+                    <ul class="feature-list">
+                        <li>Direct flight prioritization</li>
+                        <li>Child-friendly timing suggestions</li>
+                        <li>Seat configuration recommendations</li>
+                        <li>Real-time price tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🏨</div>
+                    <h3>Family-First Accommodation</h3>
+                    <p>Discover hotels and apartments with connecting rooms, kid's clubs, pools, and safety features—all filtered by your family size.</p>
+                    <ul class="feature-list">
+                        <li>Connecting room availability</li>
+                        <li>Kitchen & laundry facilities</li>
+                        <li>Proximity to family attractions</li>
+                        <li>Verified family reviews</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalized Itineraries</h3>
+                    <p>Get day-by-day plans with activities matched to your kids' ages, energy levels, and interests—from museums to playgrounds.</p>
+                    <ul class="feature-list">
+                        <li>Age-appropriate activities</li>
+                        <li>Balanced pacing for families</li>
+                        <li>Indoor/outdoor mix</li>
+                        <li>Budget-conscious suggestions</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💰</div>
+                    <h3>Price Comparison Made Easy</h3>
+                    <p>Compare prices across all major platforms in one place. No more opening dozens of tabs to find the best deal.</p>
+                    <ul class="feature-list">
+                        <li>Multi-platform price comparison</li>
+                        <li>Hidden fee detection</li>
+                        <li>Best time to book alerts</li>
+                        <li>Family package deals</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔒</div>
+                    <h3>GDPR Compliant & Secure</h3>
+                    <p>Built from the ground up for European families with full GDPR compliance, EU data centers, and privacy-first architecture.</p>
+                    <ul class="feature-list">
+                        <li>EU-based data storage</li>
+                        <li>End-to-end encryption</li>
+                        <li>No data selling, ever</li>
+                        <li>Right to deletion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Section -->
+    <section class="ai-section" id="how-it-works">
+        <div class="container">
+            <div class="ai-content">
+                <div>
+                    <h2 style="font-size: 48px; margin-bottom: 20px;">How TravelSphere Works</h2>
+                    <p style="font-size: 20px; color: #cbd5e1; margin-bottom: 40px;">
+                        Our AI-powered system learns and adapts to your family's unique travel preferences
+                    </p>
+                </div>
+                <div class="ai-visual">
+                    <div class="ai-step fade-in">
+                        <div class="ai-step-number">1</div>
+                        <h4>Create Your Family Profile</h4>
+                        <p>Tell us about your family—ages, interests, budget range, and travel preferences. Takes just 2 minutes.</p>
+                    </div>
+                    <div class="ai-step fade-in">
+                        <div class="ai-step-number">2</div>
+                        <h4>AI Learns Your Style</h4>
+                        <p>Our algorithms analyze your preferences and compare with similar families to understand what you'll love.</p>
+                    </div>
+                    <div class="ai-step fade-in">
+                        <div class="ai-step-number">3</div>
+                        <h4>Get Personalized Results</h4>
+                        <p>Search once, get results ranked by family-friendliness score—flights, hotels, and activities all matched to you.</p>
+                    </div>
+                    <div class="ai-step fade-in">
+                        <div class="ai-step-number">4</div>
+                        <h4>Book with Confidence</h4>
+                        <p>Compare prices, read verified family reviews, and book directly—all within the app. We never mark up prices.</p>
+                    </div>
+                    <div class="ai-step fade-in">
+                        <div class="ai-step-number">5</div>
+                        <h4>Gets Smarter Over Time</h4>
+                        <p>Each trip you plan teaches our AI more about your family, making future recommendations even better.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Start free, upgrade when you're ready. No credit card required.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>Free</h3>
+                    <p class="pricing-description">Perfect for trying TravelSphere</p>
+                    <div class="price">€0</div>
+                    <p class="price-period">Forever free</p>
+                    <ul class="pricing-features">
+                        <li>3 searches per month</li>
+                        <li>Basic flight & hotel search</li>
+                        <li>Family profile creation</li>
+                        <li>Price comparisons</li>
+                        <li>Mobile app access</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Start Free</a>
+                </div>
+                
+                <div class="pricing-card featured fade-in">
+                    <span class="popular-badge">Most Popular</span>
+                    <h3>Premium</h3>
+                    <p class="pricing-description">For families who travel</p>
+                    <div class="price">€9.99</div>
+                    <p class="price-period">per month</p>
+                    <ul class="pricing-features">
+                        <li>Unlimited searches</li>
+                        <li>AI personalization</li>
+                        <li>Custom itineraries</li>
+                        <li>Price drop alerts</li>
+                        <li>Priority support</li>
+                        <li>Collaborative planning</li>
+                        <li>Offline access</li>
+                        <li>Calendar sync</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Start 14-Day Trial</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: #666;">
+                All plans include GDPR compliance • No hidden fees • Cancel anytime
+            </p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Loved by European Families</h2>
+                <p>Join thousands of families planning stress-free vacations</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "TravelSphere cut our planning time from 3 weeks to 2 hours! The AI actually understands that our 8-year-old needs different activities than our toddler. Game changer."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👨</div>
+                        <div class="author-info">
+                            <h4>Thomas Schmidt</h4>
+                            <p>Berlin • Family of 4</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Finally, a travel app that gets family travel! The accommodation filters for connecting rooms and kid-friendly amenities saved us so much hassle. Worth every euro."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👩</div>
+                        <div class="author-info">
+                            <h4>Sophie Dubois</h4>
+                            <p>Paris • Family of 5</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "We've used TravelSphere for 4 trips now and it keeps getting better. The AI remembers that our son has a nut allergy and always suggests appropriate restaurants. Brilliant!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👨</div>
+                        <div class="author-info">
+                            <h4>James Henderson</h4>
+                            <p>London • Family of 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="cta">
+        <div class="container">
+            <h2>Start Planning Your Perfect Family Trip</h2>
+            <p>Join thousands of European families traveling smarter with AI</p>
+            <a href="#pricing" class="cta-button" style="font-size: 20px; padding: 20px 48px; background: white; color: #2563eb;">Get Started - It's Free</a>
+            <div class="app-badges">
+                <div class="app-badge">
+                    <div class="app-badge-icon">📱</div>
+                    <div>
+                        <div style="font-size: 12px; opacity: 0.8;">Download on</div>
+                        <div style="font-size: 16px;">App Store</div>
+                    </div>
+                </div>
+                <div class="app-badge">
+                    <div class="app-badge-icon">🤖</div>
+                    <div>
+                        <div style="font-size: 12px; opacity: 0.8;">Get it on</div>
+                        <div style="font-size: 16px;">Google Play</div>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 30px; font-size: 16px;">No credit card required • 14-day free trial • Cancel anytime</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Markets</h4>
+                    <ul>
+                        <li><a href="#">London</a></li>
+                        <li><a href="#">Paris</a></li>
+                        <li><a href="#">Amsterdam</a></li>
+                        <li><a href="#">Berlin</a></li>
+                        <li><a href="#">Barcelona</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Travel Guides</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Docs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TravelSphere. All rights reserved. • GDPR Compliant • Made with ❤️ for European Families</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

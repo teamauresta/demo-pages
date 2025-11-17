@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinguaFlow Pro - Professional Translation Earbuds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 20px 0;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .cta-button {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+
+        .alert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .secondary-button {
+            padding: 12px 28px;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .secondary-button:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 80px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Apple Weakness Section */
+        .apple-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            margin-top: 100px;
+        }
+
+        .apple-section h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+        }
+
+        .weakness-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .weakness-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .weakness-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .weakness-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .weakness-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .weakness-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .features-subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Target Markets */
+        .markets {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .markets h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+        }
+
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .market-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .market-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .market-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .market-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .market-size {
+            font-size: 18px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .market-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .market-card ul li {
+            padding: 10px 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .market-card ul li:before {
+            content: '✓';
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+        }
+
+        .pricing h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #667eea;
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.07);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .pricing-card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .pricing-description {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .price {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            color: #666;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .pricing-features li:before {
+            content: '✓';
+            color: #667eea;
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Specs Section */
+        .specs {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #434343 0%, #000000 100%);
+            color: white;
+        }
+
+        .specs h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .spec-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .spec-card h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .spec-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .final-cta h2 {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 15px;
+            min-width: 120px;
+        }
+
+        .countdown-value {
+            font-size: 48px;
+            font-weight: 800;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .features-grid,
+            .markets-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .final-cta h2 {
+                font-size: 36px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">🎧</div>
+                    <span>LinguaFlow Pro</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#markets">Markets</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#specs">Specs</a>
+                    <a href="#cta" class="cta-button">Pre-Order Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="alert-badge">
+                ⚡ Apple's Weakness = Your Opportunity
+            </div>
+            <h1>
+                Professional Translation<br/>
+                <span class="gradient-text">Without Apple's Limitations</span>
+            </h1>
+            <p>
+                While AirPods Pro 3 offers beta translation in 17 languages for iPhone 15 Pro+ only, 
+                LinguaFlow Pro delivers production-ready translation in 100+ languages for every device.
+            </p>
+            <div class="hero-cta">
+                <a href="#pricing" class="cta-button">Pre-Order at $199</a>
+                <a href="#features" class="secondary-button">See How It Works</a>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card fade-in">
+                    <div class="stat-value">$3.5B</div>
+                    <div class="stat-label">Market by 2031</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-value">100+</div>
+                    <div class="stat-label">Languages Supported</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-value">36</div>
+                    <div class="stat-label">Offline Languages</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-value">8hr</div>
+                    <div class="stat-label">Battery Life</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apple Weakness Section -->
+    <section class="apple-section">
+        <div class="container">
+            <h2>Why Apple Left the Door Open</h2>
+            <div class="weakness-grid">
+                <div class="weakness-card fade-in">
+                    <div class="weakness-icon">⚠️</div>
+                    <h3>Beta Status</h3>
+                    <p>Apple's translation is beta-only, unreliable for professional use. We're production-ready from day one.</p>
+                </div>
+                <div class="weakness-card fade-in">
+                    <div class="weakness-icon">📱</div>
+                    <h3>iPhone 15 Pro+ Only</h3>
+                    <p>Requires $1,200+ iPhone. We work with every phone—iPhone, Android, or anything with Bluetooth.</p>
+                </div>
+                <div class="weakness-card fade-in">
+                    <div class="weakness-icon">🌍</div>
+                    <h3>Only 17 Languages</h3>
+                    <p>Apple: 17 languages. Us: 100+ languages. Speak to 5.5 billion people, not just Apple's chosen few.</p>
+                </div>
+                <div class="weakness-card fade-in">
+                    <div class="weakness-icon">🏢</div>
+                    <h3>No Enterprise Features</h3>
+                    <p>No HIPAA compliance, no SOC 2, no enterprise security. Built for consumers, not professionals.</p>
+                </div>
+                <div class="weakness-card fade-in">
+                    <div class="weakness-icon">💰</div>
+                    <h3>$249 for Beta</h3>
+                    <p>Pay premium price for incomplete features. We deliver full functionality at $199.</p>
+                </div>
+                <div class="weakness-card fade-in">
+                    <div class="weakness-icon">⏱️</div>
+                    <h3>12-18 Month Window</h3>
+                    <p>Apple needs 12-18 months to fix these issues. We're capturing the market now.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Professional-Grade Translation</h2>
+            <p class="features-subtitle">Powered by Meta's SeamlessM4T v2 AI models</p>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🏥</div>
+                    <h3>Medical Translation</h3>
+                    <p>HIPAA-compliant processing with 99%+ medical terminology accuracy. Integration with EMR systems. Trusted by healthcare professionals in multilingual environments.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Enterprise Security</h3>
+                    <p>End-to-end encryption, SOC 2 Type II certification, Active Directory integration. White-label options for Fortune 500 companies.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📡</div>
+                    <h3>Offline Excellence</h3>
+                    <p>36 languages work completely offline with on-device AI. No subscription fees for language packs. Privacy-first architecture.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Zero-Latency Prediction</h3>
+                    <p>Patent-pending conversation flow prediction reduces latency by 60-80%. Real-time interrupt handling for natural conversations.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Universal Compatibility</h3>
+                    <p>Native integration with Teams, Slack, Zoom. Works with all smartphones equally well. No ecosystem lock-in.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Context-Aware AI</h3>
+                    <p>Real-time topic detection and domain switching. Dynamic model selection for medical, legal, technical, or casual conversations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Markets -->
+    <section class="markets" id="markets">
+        <div class="container">
+            <h2>Built for Professionals</h2>
+            <div class="markets-grid">
+                <div class="market-card fade-in">
+                    <span class="market-badge">PRIMARY</span>
+                    <h3>International Business</h3>
+                    <div class="market-size">$57B Enterprise Market</div>
+                    <p>4.4M frequent business travelers losing deals due to language barriers. Critical for negotiations, presentations, and client relationships.</p>
+                    <ul>
+                        <li>Cross-platform compatibility</li>
+                        <li>Enterprise API access</li>
+                        <li>Meeting integration</li>
+                        <li>Expense reporting ready</li>
+                    </ul>
+                </div>
+                <div class="market-card fade-in">
+                    <span class="market-badge">SECONDARY</span>
+                    <h3>Healthcare Workers</h3>
+                    <div class="market-size">$805M Medical Translation</div>
+                    <p>500K healthcare workers in multilingual environments. Critical accuracy requirements for patient safety and care quality.</p>
+                    <ul>
+                        <li>HIPAA-compliant processing</li>
+                        <li>Medical terminology accuracy 99%+</li>
+                        <li>EMR system integration</li>
+                        <li>Institution bulk pricing</li>
+                    </ul>
+                </div>
+                <div class="market-card fade-in">
+                    <span class="market-badge">TERTIARY</span>
+                    <h3>Language Learners</h3>
+                    <div class="market-size">2.1M Active Learners</div>
+                    <p>Language learners seeking immersive practice with real-time feedback. Learning mode with pronunciation guidance.</p>
+                    <ul>
+                        <li>Learning mode with feedback</li>
+                        <li>Pronunciation coaching</li>
+                        <li>Progress tracking</li>
+                        <li>Conversation practice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <p class="pricing-subtitle">Choose the plan that fits your needs. All include 30-day money-back guarantee.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>Consumer</h3>
+                    <p class="pricing-description">Perfect for travelers and language learners</p>
+                    <div class="price">$169</div>
+                    <ul class="pricing-features">
+                        <li>100+ languages</li>
+                        <li>36 offline languages</li>
+                        <li>8-hour battery life</li>
+                        <li>Universal compatibility</li>
+                        <li>Free firmware updates</li>
+                        <li>1-year warranty</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Pre-Order Now</a>
+                </div>
+                
+                <div class="pricing-card featured fade-in">
+                    <span class="popular-badge">Most Popular</span>
+                    <h3>Professional</h3>
+                    <p class="pricing-description">Ideal for business professionals</p>
+                    <div class="price">$199</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Consumer</li>
+                        <li>Priority cloud processing</li>
+                        <li>Teams/Slack/Zoom integration</li>
+                        <li>Business terminology pack</li>
+                        <li>Priority support</li>
+                        <li>2-year warranty</li>
+                        <li>Expense reporting ready</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Pre-Order Now</a>
+                </div>
+                
+                <div class="pricing-card fade-in">
+                    <h3>Enterprise</h3>
+                    <p class="pricing-description">Complete solution for organizations</p>
+                    <div class="price">$299</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Professional</li>
+                        <li>HIPAA/SOC 2 compliance</li>
+                        <li>Medical terminology pack</li>
+                        <li>Active Directory integration</li>
+                        <li>Dedicated account manager</li>
+                        <li>White-label options</li>
+                        <li>Custom integrations</li>
+                        <li>Bulk pricing available</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs -->
+    <section class="specs" id="specs">
+        <div class="container">
+            <h2>Technical Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card fade-in">
+                    <h4>Processor</h4>
+                    <p>Qualcomm QCC5144 6-core audio processor with Hailo-10H AI co-processor (26 TOPS)</p>
+                </div>
+                <div class="spec-card fade-in">
+                    <h4>Audio System</h4>
+                    <p>3-mic hybrid array, 11mm dynamic drivers, 24-bit/96kHz DAC, third-order beamforming</p>
+                </div>
+                <div class="spec-card fade-in">
+                    <h4>Memory & Storage</h4>
+                    <p>1GB LPDDR4 RAM, 8GB eUFS storage for offline language packs, 64MB translation cache</p>
+                </div>
+                <div class="spec-card fade-in">
+                    <h4>Battery Life</h4>
+                    <p>8 hours translation mode, 35+ hours with charging case, USB-C fast charging</p>
+                </div>
+                <div class="spec-card fade-in">
+                    <h4>Connectivity</h4>
+                    <p>Bluetooth 5.3 with LE Audio, WiFi 6E, aptX Adaptive codec support</p>
+                </div>
+                <div class="spec-card fade-in">
+                    <h4>Physical</h4>
+                    <p>5g per earbud, IPX5 water resistant, medical-grade silicone tips (5 sizes)</p>
+                </div>
+                <div class="spec-card fade-in">
+                    <h4>AI Models</h4>
+                    <p>Meta SeamlessM4T v2 family with on-device processing for 36 core languages</p>
+                </div>
+                <div class="spec-card fade-in">
+                    <h4>Latency</h4>
+                    <p>&lt;40ms for translation with predictive buffering, &lt;150ms for audio playback</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="cta">
+        <div class="container">
+            <h2>Launch Window: October 2025</h2>
+            <p>Be among the first to own professional translation earbuds. Pre-order now and save $50.</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value">12-18</span>
+                    <span class="countdown-label">Months Before Apple Catches Up</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value">100+</span>
+                    <span class="countdown-label">Languages vs Apple's 17</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value">$50</span>
+                    <span class="countdown-label">Early Bird Savings</span>
+                </div>
+            </div>
+            
+            <a href="#pricing" class="cta-button" style="font-size: 18px; padding: 18px 48px;">Pre-Order at $199</a>
+            <p style="margin-top: 20px; font-size: 16px;">30-day money-back guarantee • Free shipping • 2-year warranty</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#specs">Specifications</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">Pre-Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Enterprise</a></li>
+                        <li><a href="#">Healthcare</a></li>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">Travel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LinguaFlow Pro. All rights reserved. • FCC/CE Certified • SOC 2 Type II Compliant</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
